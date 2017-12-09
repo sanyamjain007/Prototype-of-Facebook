@@ -1,0 +1,102 @@
+#navigationBar{
+
+background-color: rgb(46,82,140);
+height: 50px;
+}
+
+#navBarContainer{
+
+	margin-top:10px; 
+
+}
+
+#navBarSearch{
+
+	margin-left: 40px;
+	
+}
+.right-inner-addon{
+
+	position: relative;
+}
+.right-inner-addon input{
+	padding-right:70px; 
+}
+.right-inner-addon i{
+	position: absolute;
+	padding-left:405px;
+	padding-top: 6px;
+	pointer-events:none; 
+}
+
+
+#navBarList{
+
+	display: inline;
+	padding-right:30px;
+	padding-top: 12px;
+
+}
+
+#navBarfriendRequests{
+display: inline;
+
+}
+
+.div-inline{
+    display:inline-block;
+}
+
+ .affix {
+      top: 0;
+      width: 100%;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+  #profileNavBar{
+   position:relative;
+  	z-index:1;
+  	height: 40px;
+  }
+  #profilePic{
+    position: relative;
+  	margin-top: 100px; 
+  	z-index:2;
+  }
+  #navBarList{
+  	position: relative;
+margin-left:300px;
+}
+div.col1{
+	position: relative;
+	background-image: url('backgroundImage.jpg');
+}
+div.nameOnImage{
+
+position: absolute;
+margin-left: 330px;
+margin-top:250px;
+
+}
+#profileName{
+	position: relative,fixed;
+	font-weight: bold;
+	color: white;
+	opacity: 0.6;
+	
+}
+#personalInfoPanel{
+	position: relative;
+	margin-left:3px;
+	margin-top: 10px; 
+}
+
+.h-scroll {
+min-height: 600px;
+    max-height: 600px; /* %-height of the viewport */
+    position: fixed, right;
+    overflow-y: scroll;
+    right:0px;
+}

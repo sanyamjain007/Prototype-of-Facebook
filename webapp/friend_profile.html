@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Profile</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="Profile.css">
+<link rel="stylesheet" type="text/css" href="fbhome.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-3.1.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<style>
+     @media only screen and (max-width : 540px) 
+            {
+                
+                
+            }
+    .popup-box
+            {
+               
+                position: fixed;
+                bottom: 0px;
+                right: 220px;
+                height: 285px;
+                background-color: rgb(237, 239, 244);
+                width: 300px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+            
+            .popup-box .popup-head
+            {
+                background-color: #6d84b4;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                clear: both;
+            }
+            
+            .popup-box .popup-head .popup-head-left
+            {
+                float: left;
+            }
+            
+            .popup-box .popup-head .popup-head-right
+            {
+                float: right;
+                opacity: 0.5;
+            }
+            
+            .popup-box .popup-head .popup-head-right a
+            {
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .popup-box .popup-messages
+            {
+                height: 225px;
+                overflow-y: scroll;
+            }
+            
+    .test1 {
+width: 70%;
+word-wrap: break-word;
+padding: 0.5em;
+margin-left:0.5em;
+}
+
+.test2 {
+width: 70%;
+word-wrap: break-word;
+padding: 0.5em;
+}
+   
+    </style>
+
+</head>
+<body>
+	<nav class="navbar navbar-fixed-top"
+		style="display: flex; align-items: center; justify-content: center">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <img src="fblogo.jpg"
+					width="20px">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<input id="navBarSearch" type="text" value="" name="navBarSearch"
+					placeholder="Search People" size="50px" onkeydown="search()" style="margin-top: 12px">
+				<div class="nav navbar-nav navbar-right">
+					<div class="btn-toolbar pull-right" role="toolbar">
+						<div class="btn-group" role="group">
+							<img id="navImg" src="pic.jpg" width="40px" height="40px"
+								style="padding: 0px">
+							<button id="profile" class="navbar-btn" type="button">Priyank</button>
+							<button id="home" class="navbar-btn" type="button">Home</button>
+							<button id="find_friend" class="navbar-btn" type="button">Find Friend</button>
+							<button class="navbar-btn" type="button">
+								<span class="glyphicon glyphicon-user"></span>
+							</button>
+							<button class="fb-notifications navbar-btn" type="button">
+								<span class="glyphicon glyphicon-comment"></span>
+							</button>
+							<button class="fb-notifications navbar-btn" type="button">
+								<span class="glyphicon glyphicon-globe"></span>
+							</button>
+						</div>
+						<div class="btn-group" role="group">
+							<div class="dropdown btn-group" role="group">
+								<button id="dropbtn1" type="button"
+									class="btn btn-default dropdown-toggle navbar-btn"
+									data-toggle="dropdown" aria-haspopup="true">
+									<span class="glyphicon glyphicon-triangle-bottom"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropbtn1">
+									<li><a href="#">Create Page</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Create Group</a></li>
+									<li><a href="#">New Group</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="#">Activity Log</a></li>
+									<li><a href="#">Settings</a></li>
+									<li><a id="logout" href="#">Log out</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+	</nav>
+	<div class="row" style="margin-top: 50px">
+		<div class="col-xs-1" style="background-color: rgb(247, 247, 247);"></div>
+		<div class="col-xs-8" style="background-color: rgb(247, 247, 247);">
+			<div class="panel panel-default">
+				<div class="panel-body" style="padding: 0px; height: 300px">
+					<img  src="backgroundImage.jpg" width="100%" height="100%">
+					<h2 id="profileName" style="position: fixed, relative; margin-top: -50px; margin-left: 200px; color: white">Anupam
+						Awasthi</h2>
+				</div>
+				<div class="panel-footer"
+					style="padding: 0px; background: white; display: flex">
+					<ul class="nav nav-tabs" id="navBarList" style="margin-left: 170px">
+						<li class="nav-item"><a class="nav-link active" id="timeline"><b>Timeline</b></a></li>
+						<li class="nav-item"><a class="nav-link" id="update"><b>About</b></a></li>
+						<li class="nav-item"><a class="nav-link" id="friends"><b>Friends</b></a></li>
+						<li class="nav-item"><a class="nav-link" id="photos"><b>Photos</b></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<img id="ProfileImg" src="pic.jpg" width="150px" height="150px"
+				style="position: relative; margin-top: -250px; margin-left: 20px">
+
+
+			<div id="photosDisplayRow" class="row"
+				style="margin-top: 3em; display: none">
+				<div class="col-md-9 col-lg-9 col-sm-9 col-xs-9"
+					id="photosDisplayCol" style="margin-left: 3em;"></div>
+			</div>
+
+			<div id="friendsDisplayRow" class="row"
+				style="margin-top: 3em; display: none">
+				<div id="friendsDisplayCol"
+					class="col-md-9 col-lg-9 col-sm-9 col-xs-9"
+					style="margin-left: 3em"></div>
+			</div>
+			
+			<!--  Table for about info -->
+			<div id="tableUpdateDetails" style="background: white; display: none">
+				<div style="margin-left: 10px; mrgin-top: 20px; padding: 10px">
+					<h3>About</h3>
+				</div>
+				<table id="table" class="table table-hover" style="padding: 0px">
+					<tbody>
+						<tr>
+							<td>First Name :</td>
+							<td id="name_about">First Name</td>
+						</tr>
+						<tr>
+							<td>Contact no :</td>
+							<td id="contact_about">Contact no.</td>
+						</tr>
+						<tr>
+							<td>Home Town :</td>
+							<td id="hometown_about">Home Town</td>
+						</tr>
+						<tr>
+							<td>Current City :</td>
+							<td id="currentCity_about">Current City</td>
+						</tr>
+						<tr>
+							<td>College :</td>
+							<td id="college_about">College</td>
+						</tr>
+						<tr>
+							<td>Employer :</td>
+							<td id="employer_about">Employer</td>
+						</tr>
+						<tr>
+							<td>Graduate School :</td>
+							<td id="gradSchool_about">Graduate School</td>
+						</tr>
+						<tr>
+							<td>DOB :</td>
+							<td id="dob_about">DOB :</td>
+						</tr>
+						<tr>
+							<td>high school :</td>
+							<td id="highSchool_about"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div id="photosDisplayRow" class="row"
+				style="margin-top: 3em; display: none">
+				<div style="margin-left: 20px">
+					<h3>Photos</h3>
+				</div>
+				<hr>
+				<div class="col-xs-7" id="photosDisplayCol"></div>
+			</div>
+
+
+			<!-- friends panel -->
+			<div id="friendsRow" class="row"
+				style="background: white; padding: 10px; display: none">
+				<div style="margin-left: 20px">
+					<h3>Friends</h3>
+				</div>
+				<hr>
+				<div id="leftFriend" class="col-xs-6"></div>
+				<div id="rightFriend" class="col-xs-6"></div>
+			</div>
+			
+			<!-- row for post details and basic info -->
+			<div class="row" id="timelinePost">
+				<div class="col-xs-4">
+					<div class="panel panel-default">
+						<div class="panel-body" style="padding: 0px">
+							<div style="margin-left: 10px; border-bottom: 1px solid black">
+								<h4>Basic updateInfo</h4>
+							</div>
+							<ul class="list-group">
+								<li class="list-group-item">Name - <span id="name_timeline">Priyank
+										Sharma</span></li>
+								<li class="list-group-item">Home Town - <span
+									id="hometown_timeline">Jabalpur</span></li>
+								<li class="list-group-item">Current City - <span
+									id="currentCity_timeline">Jabalpur</span></li>
+								<li class="list-group-item">College - <span
+									id="college_timeline">Jabalpur</span></li>
+								<li class="list-group-item">Employer - <span
+									id="employer_timeline">Jabalpur</span></li>
+								<li class="list-group-item">Graduate School - <span
+									id="gradSchool_timeline">Jabalpur</span></li>
+								<li class="list-group-item">Contact - <span
+									id="contact_timeline">7415590677</span></li>
+								<li class="list-group-item">Date of Birth - <span
+									id="dob_timeline"></span></li>
+								<li class="list-group-item">High School- <span
+									id="highSchool_timeline"></span></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="profilePostCol" class="col-xs-8">
+					<!--          ---------------------Posts Column---------------------------------  -->
+
+					<div class="panel-body">
+
+						<!-- <form method="post" id="postForm" enctype="multipart/form-data">
+							<div class="row">
+								<a href="#"><span class="glyphicon glyphicon-camera"></span><label
+									for="files"> Upload Photo</label></a> <input type="file"
+									name="file" id="file_data" />
+								<p id="uploadImage">Select a file : <input type="file" name="file" size="45" id="file_data" class="btn btn-success" /></p>
+								<input type="text" name="user_name" id="user_name"
+									style="display: none" />
+								<div class="col-md-2">
+									<img id="aboutProfileImg" src="pic.jpg" class="img-circle"
+										width="100%" />
+								</div>
+
+								<div class="col-md-10">
+									<textarea name="postdata" class="form-control" id="feedbox"
+										rows="3"></textarea>
+									<br>
+									<button type="submit" class="btn btn-primary">Post</button>
+								</div>
+							</div>
+						</form>
+ -->
+					</div>
+					<!-- panel body ends -->
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-1"></div>
+		<div class="col-xs-2" class="panel" style="padding-right: 0px;">
+			<!-- Chat room -->
+			<div class="panel-header">
+				<input type="text" style="width: 100%" placeholder="filter">
+			</div>
+			<div class="panel-body" style="padding-right: 0px;">
+				<div class="h-scroll" id="chat"
+					style="background-color: rgb(247, 247, 247); padding-left: 10px;">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	$("#photos").click(function() {
+		$("#tableUpdateDetails").hide();
+		$("#friendsRow").hide();
+		$("#timelinePost").hide();
+		$("#photosDisplayCol").empty();
+		$("#photosDisplayRow").show();
+		$.ajax({
+			type : "get",
+			url : "http://localhost:8080/facebook_group6/webapi/users/getImages/"+ sessionStorage.friend_id,
+			success : function(response) {
+				if (response != null) {
+					var data2 = response.split("_");
+					var i;
+					for (i = 1; i < data2.length; i++) {
+						var elem = document.createElement("IMG");
+						elem.setAttribute("height","100px");
+						elem.setAttribute("width","100px");
+						elem.setAttribute("id",data2[i]);
+						elem.setAttribute("src","users/"+ sessionStorage.friend_id+ "/images/"+ data2[i]);
+						$("#photosDisplayCol").append(elem);
+					}
+				} 
+				else
+					alert("Try Again");
+			}
+		});
+	});
+	
+	$("#update").click(function() {
+		$("#photosDisplayRow").hide();
+		$("#friendsDisplayRow").hide();
+		$("#friendsDisplayCol").hide();
+		$("#friendsRow").hide();
+		$("#timelinePost").hide();
+		$("#tableUpdateDetails").show();
+		document.getElementById("name_about").innerHTML = sessionStorage.friend_fname+ " " + sessionStorage.friend_lname;
+		document.getElementById("hometown_about").innerHTML = sessionStorage.friend_hometown;
+		document.getElementById("currentCity_about").innerHTML = sessionStorage.friend_currentCity;
+		document.getElementById("college_about").innerHTML = sessionStorage.friend_college;
+		document.getElementById("employer_about").innerHTML = sessionStorage.friend_employer;
+		document.getElementById("gradSchool_about").innerHTML = sessionStorage.friend_gradSchool;
+		document.getElementById("highSchool_about").innerHTML = sessionStorage.friend_highSchool;
+		document.getElementById("dob_about").innerHTML = sessionStorage.friend_dob;
+		document.getElementById("contact_about").innerHTML = sessionStorage.friend_contact;
+		document.getElementById("name_timeline").innerHTML = sessionStorage.friend_fname+ " " + sessionStorage.friend_lname;
+		document.getElementById("hometown_timeline").innerHTML = sessionStorage.friend_hometown;
+		document.getElementById("currentCity_timeline").innerHTML = sessionStorage.friend_currentCity;
+		document.getElementById("college_timeline").innerHTML = sessionStorage.friend_college;
+		document.getElementById("employer_timeline").innerHTML = sessionStorage.friend_employer;
+		document.getElementById("gradSchool_timeline").innerHTML = sessionStorage.friend_gradSchool;
+		document.getElementById("dob_timeline").innerHTML = sessionStorage.friend_dob;
+		document.getElementById("contact_timeline").innerHTML = sessionStorage.friend_contact;
+		document.getElementById("highSchool_timeline").innerHTML = sessionStorage.friend_highSchool;
+	});
+
+	
+	$("#friends").click(function() {
+		$("#photosDisplayRow").hide();
+		$("#tableUpdateDetails").hide();
+		$("#timelinePost").hide();
+		$("#friendsRow").show();
+		$("#leftFriend").empty();
+		$("#rightFriend").empty();
+		$.ajax({
+			type : "get",
+			url : "http://localhost:8080/facebook_group6/webapi/users/"+ sessionStorage.friend_id + "/friends",
+			success : function(response) {
+				if (response != null) {
+					var j = 0;
+					for (var i = 0; i < response.length; i++) {
+						var request = response[i];
+						var requestMedia = document.createElement("div");
+						requestMedia.setAttribute("class", "media");
+						requestMedia.setAttribute("id","requestMedia_"+ request["user_id"]);
+						requestMedia.setAttribute("style","border:1px solid #dddddd")
+						var mediaLeft = document.createElement("div");
+						mediaLeft.setAttribute("class","media-left media-middle");
+						mediaLeft.setAttribute("id","divImageId_"+ request["user_id"]);
+						var image = document.createElement("IMG");
+						image.setAttribute("src","users/"+ request["user_id"]+ "/"+ request["profilePicUrl"]);
+						image.style.width = "100px";
+						image.style.height = "100px";
+						mediaLeft.appendChild(image);
+						var mediaBody = document.createElement("div");
+						mediaBody.setAttribute("class","media-body media-middle");
+						mediaBody.setAttribute("id","divNameId_"+ request["user_id"]);
+						var anc1 = document.createElement("a");
+						anc1.setAttribute("href", "#");
+						anc1.setAttribute("id","friendId_"+ request["user_id"])
+						anc1.innerHTML = "<h4>"+ request["first_name"]+ " "+ request["last_name"]+ "</h4>";
+						anc1.setAttribute("onClick",
+						"friendProfile(this)");
+						mediaBody.appendChild(anc1);
+						if(request["user_id"]!=sessionStorage.id)
+							{
+						var mutualFriendLink = document.createElement("a");
+						mutualFriendLink.setAttribute("id","mutualFriendCount_"+ request["user_id"]);
+						mutualFriendLink.setAttribute("class", "hover");
+						mutualFriendLink.setAttribute("data-placement","auto");
+						mutualFriendLink.setAttribute("data-toggle","tooltip");
+						mutualFriendLink.setAttribute("data-html", "true");
+							
+						//  mutualFriendLink.setAttribute("onmouseenter","getMutualFriends(this)");
+		/* ----------------------------------------------------mutual friend count ajax--------------------------------- */
+							$.ajax({
+								type : "get",
+								async : false,
+								url : "http://localhost:8080/facebook_group6/webapi/users/"+ sessionStorage.id+ "/friends/"
+																+ request["user_id"]+ "?count=true",
+								success : function(response) {
+									if (response == 1)
+										mutualFriendLink.innerHTML = "1 mutual friend";
+									else if (response > 1)
+										mutualFriendLink.innerHTML = response+ " mutual friends";
+								}
+
+							});
+		/* --------------------------------mutual friend count ajax--------------------------------- */
+							
+
+							
+							mediaBody.appendChild(mutualFriendLink);
+							}
+						
+						
+							var mediaRight = document.createElement("div");
+							mediaRight.setAttribute("class","media-right media-middle");
+							var buttonGroup = document.createElement("div");
+							buttonGroup.setAttribute("class","btn-group btn-group-sm");
+							buttonGroup.setAttribute("role", "group");
+							requestMedia.appendChild(mediaLeft);
+							requestMedia.appendChild(mediaBody);
+							requestMedia.appendChild(mediaRight);
+							if (j % 2 == 0)
+								document.getElementById("leftFriend").appendChild(requestMedia);
+							else
+								document.getElementById("rightFriend").appendChild(requestMedia);
+							j++;
+						}
+					}
+			}
+		});
+	});
+	
+	$("#timeline").click(function() {
+		$("#photosDisplayRow").hide();
+		$("#friendsRow").hide();
+		$("#tableUpdateDetails").hide();
+		$("#timelinePost").show();
+	});
+	
+	$("#home").click(function() {
+		window.location.href = "http://localhost:8080/facebook_group6/fbHome.html";
+	});
+	
+	$("#profile").click(function() {
+		window.location.href = "http://localhost:8080/facebook_group6/Profile.html";
+	});
+
+	$("#logout").click(function() {
+		sessionStorage.id = null;
+		sessionStorage.fName = null;
+		sessionStorage.lName = null;
+		sessionStorage.homeTown = null;
+		sessionStorage.contact = null;
+		sessionStorage.dob = null;
+		sessionStorage.mostLikedCity = null;
+		window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+	});
+	
+	function popoverFunc() {
+        $("#chat").empty();
+       
+        $
+            .ajax({
+                type: "get",
+                url: "http://localhost:8080/facebook_group6/webapi/users/" + sessionStorage.id + "/friends",
+                success: function(response) {
+                    if (response != null) {
+                        console.log(response);
+                        for (var i = 0; i < response.length; i++) {
+                            var request = response[i];
+                            var div = document.createElement("div");
+                            div.setAttribute("id", "div_"+request["user_id"]);
+
+                            var name = request["first_name"] + " " + request["last_name"];
+                            var dob = request["date_of_birth"];
+                            var hometown = request["home_town"];
+
+                            var title = "<div class=\"media\">" + "<div class=\"media-left\">" + "<img src=\"users/" + request["user_id"] + "/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">" + "</div>" + "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">" + name + "</a></h4>" + "<p>" + dob + "<br>" + hometown + "</p></div></div>";
+                          
+
+                            var anc = document.createElement("a");
+                            anc.setAttribute("id", "anc_frnd_" + request["user_id"]);
+                           
+
+                            var img = document.createElement("img");
+                            img.setAttribute("src", "users/" + request["user_id"] + "/"+request["profilePicUrl"]);
+                            img.setAttribute("id","frnd_pop_"+request["user_id"]+"_"+request["first_name"]);
+                            img.style.width = "25px";
+                            img.setAttribute("onClick","register_popup(this)");
+                           
+
+                            anc.appendChild(img);
+                            var id=request["first_name"];
+                            var name = document.createElement("a");
+                            name.setAttribute("id","frnd_pop_"+request["user_id"]);
+                            name.innerHTML=request["first_name"]+" "+request["last_name"]; 
+                            //name.setAttribute("href","javascript:register_popup(request.first_name,request.first_name);");
+                             name.setAttribute("class","hover");
+                             name.setAttribute("data-toggle", "popover");
+                             name.setAttribute("data-trigger", "hover");
+                             name.setAttribute("onmouseenter","postNamepop(this)");
+                           
+                           
+                            anc.appendChild(name);
+                            div.appendChild(anc);
+                            document.getElementById("chat")
+                                .appendChild(div);
+
+                            var hr = document.createElement("hr");
+                            document.getElementById("chat").appendChild(hr);
+                          
+                        }
+                    }
+                }
+            });
+    }
+    
+Array.remove = function(array, from, to) {
+   var rest = array.slice((to || from) + 1 || array.length);
+   array.length = from < 0 ? array.length + from : from;
+   return array.push.apply(array, rest);
+}
+
+//this variable represents the total number of popups can be displayed according to the viewport width
+var total_popups = 0;
+
+//arrays of popups ids
+var popups = [];
+
+//this is used to close a popup
+function close_popup(id)
+{
+console.log("in close "+ id);
+   for(var iii = 0; iii < popups.length; iii++)
+   {
+       if(id == popups[iii])
+       {
+        console.log(popups[iii],id);
+        
+           Array.remove(popups, iii);
+           console.log(popups[iii],id);
+           
+           document.getElementById(id).style.display = "none";
+           document.getElementById(id).remove();
+           console.log(document.getElementById(id));
+           calculate_popups();
+           console.log("close end");
+           for(var i=0; i<popups.length;i++)
+            {
+            console.log(popups[i]);
+            }
+           console.log("close popup");
+           return;
+       }
+   }   
+}
+
+//displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+function display_popups()
+{
+console.log("in display popup");
+   var right = 220;
+   
+   var iii = 0;
+   for(iii; iii < total_popups; iii++)
+   {
+    
+       if(popups[iii] != undefined)
+       {
+        console.log("in popup fn if statament"+ popups[iii]);
+           var element = document.getElementById(popups[iii]);
+           element.style.right = right + "px";
+           right = right + 320;
+           element.style.display = "block";
+          // console.log(element);
+       }
+   }
+   
+   for(var jjj = iii; jjj < popups.length; jjj++)
+   {
+       var element = document.getElementById(popups[jjj]);
+       element.style.display = "none";
+   }
+   console.log("end of display popup");
+}
+
+
+//creates markup for a new popup. Adds the id to popups array.
+function register_popup(x)
+
+{
+console.log("in rgister function");
+var popid= x.id;
+console.log(popid);
+var temp =x.id.split('_')[2];
+var id=temp;
+var name = x.id.split('_')[3];
+console.log(name);
+console.log("id in register "+id);
+   
+   console.log(popups.length);
+   //System.out.println("in register function")
+   for(var iii = 0; iii < popups.length; iii++)
+   {   
+       //already registered. Bring it to front.
+       if(id == popups[iii])
+       {
+        console.log("in if");
+           Array.remove(popups, iii);
+        console.log(popups.length);
+           popups.unshift(id);
+           
+           calculate_popups();
+           
+           
+           return;
+       }
+   }               
+   
+   var element = '<div class="popup-box chat-popup" id="'+ id +'">';
+   element = element + '<div class="popup-head">';
+   element = element + '<div class="popup-head-left">'+ name +'</div>';
+   element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
+   element = element + '<div style="clear: both"></div></div><div  id="popup_messages_'+id+'" class="popup-messages"></div>';
+   element = element +'<div><input id="chatText_'+id+'"  type="text" onkeyDown="setMessage(this)" style="width:100%;margin-bottom:50px"/></div></div>';
+   //console.log("in register"+element);
+   //var pop =document.getElementById("pop_upbox");
+   //pop.append(element);
+   //console.log(pop);
+   console.log(element);
+ // document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
+ $("body").append(element);
+//console.log(document.getElementsByTagName("body")[0].innerHTML);
+   popups.unshift(id);
+   console.log("popups"+popups.length);
+           
+   calculate_popups();
+   console.log("end of from regster");
+   
+  // document.getElementById("popup_messages_"+id).appendChild(document.createTextNode("hello"));
+  
+  
+   $.ajax({
+type : "get",
+url : "http://localhost:8080/facebook_group6/webapi/userMessages/getTextMessages/"+sessionStorage.id+"/"+id,
+success : function(data) {
+
+if(data)
+{
+var len=data.length;
+for(var i=0;i<len;i++)
+{
+var message=data[i];
+if(message.sender_id==sessionStorage.id)
+createDiv(message.message,"alert alert-success  test1 pull-left","popup_messages_"+id,id);
+else
+createDiv(message.message,"alert alert-success test1 pull-right","popup_messages_"+id,id);
+}
+}
+//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+}
+});
+  
+  
+  
+}
+function setMessage(x)
+{
+var id1 = (x.id).split("_");
+if (x.value != "" && event.keyCode == 13)
+{
+var obj={"sender_id":sessionStorage.id,"receiver_id":id1[1],"message":document.getElementById(x.id).value}
+$.ajax({
+type : 'PUT',
+data : JSON.stringify(obj),
+contentType:"application/json",
+url : "http://localhost:8080/facebook_group6/webapi/userMessages/sendTextMessages",
+success : function(data) {
+
+if(data)
+{
+createDiv(data.message,"alert alert-success test1 pull-left","popup_messages_"+id1[1],id1[1]);
+document.getElementById(x.id).value='';
+}
+//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+}
+});
+}
+}
+
+function createDiv(message,cl,id1,id2){
+var Div_1 = document.createElement('div');
+Div_1.className = cl;
+var para=document.createElement('p');
+var node = document.createTextNode(message);
+para.appendChild(node);
+Div_1.appendChild(para);
+var element = document.getElementById(id1);
+element.appendChild(Div_1);
+var objDiv = document.getElementById(id1);
+objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+
+
+
+//calculate the total number of popups suitable and then populate the toatal_popups variable.
+function calculate_popups()
+{
+   var width = window.innerWidth;
+   if(width < 540)
+   {
+       total_popups = 0;
+   }
+   else
+   {
+       width = width - 200;
+       //320 is width of a single popup box
+       total_popups = parseInt(width/320);
+   }
+   console.log("hello"+total_popups);
+   display_popups();
+   
+}
+
+//recalculate when window is loaded and also when window is resized.
+window.addEventListener("resize", calculate_popups);
+window.addEventListener("load", calculate_popups);
+
+/*--------------------------------------pop over function-------------------------------------------------  */
+function fun() {
+
+var element = $(this);
+var id = element.attr("id");
+//alert(id);
+$(".hover").popover({
+content : fetchdata1,
+html : true,
+placement:"top"
+});
+}
+
+function fetchdata1() {
+
+var friendList = "<p>";
+var element = $(this);
+var pid = element.attr("id");
+var ido = pid.split('_');
+console.log(ido);
+$.ajax({
+url : "http://localhost:8080/facebook_group6/webapi/users/"
++ ido[2],
+method : "GET",
+async : false,
+//contentType: 'application/json',
+
+success : function(request) {
+console.log(request);
+var name = request["first_name"] + " "
++ request["last_name"];
+var dob = request["date_of_birth"];
+var hometown = request["home_town"];
+
+
+friendList = friendList + "<div class=\"media\">"
++ "<div class=\"media-left\">"
++ "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"
++ "</div>"
++ "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"
++ name + "</a></h4>" + "<p>" + dob
++ "<br>" + hometown
++ "</p></div></div>";
+}
+//return fetch_data;
+});
+console.log(friendList);
+return friendList;
+}
+
+
+/*--------------------------------------pop over function-------------------------------------------------  */
+/*--------------------------------------chat box-------------------------------------------------  */
+function postNamepop(x){
+ 
+var element=$(x);
+var id=element.attr("id");
+ console.log(id);
+$(".hover").popover({
+content:fetchNameim,
+html:true,
+placement:'left'
+});
+}
+ 
+ 
+function fetchNameim(){
+console.log("hello");
+var friendList="<p>";
+var element=$(this);
+var pid=element.attr("id");
+var ido = pid.split('_');
+//console.log(ido[2]);;
+$.ajax({
+url:"http://localhost:8080/facebook_group6/webapi/users/"+ido[2],
+method:"GET",
+async:false,
+//contentType: 'application/json',
+       
+       success: function(request){
+        var name = request["first_name"]+" "+request["last_name"];
+                 var dob = request["date_of_birth"];
+                 var hometown = request["home_town"];
+        friendList=friendList+"<div class=\"media\">"+"<div class=\"media-left\">"+
+                     "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"+
+                   "</div>"+
+                   "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"+name+"</a></h4>"+
+                     "<p>"+dob+"<br>"+hometown+"</p></div></div>";
+      //friendList = friendList+"First Name :"+data.first_name+"<br>"+"Last Name :"+data.last_name+"<br>"+"City :"+data.home_town+"<br>"+"Date Of birth:"+data.date_of_birth;
+ 
+       }
+ 
+});
+console.log(friendList);
+return friendList;
+}
+
+	
+	function search() {
+		console.log(document.getElementById("navBarSearch"));
+		if (event.keyCode == 13
+				&& document.getElementById("navBarSearch").value != '') {
+			$
+					.ajax({
+						type : "get",
+						//url: "http://172.16.84.232:8080/fb/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=home&userId="+sessionStorage.id,
+						url : "http://localhost:8080/facebook_group6/webapi/users/search?searchData="
+								+ document.getElementById("navBarSearch").value
+								+ "&from=home" + "&userId=" + sessionStorage.id,
+						success : function(response) {
+							console.log(response + "profile");
+							window.location.href = "http://localhost:8080/facebook_group6/search.html";
+						}
+					});
+		}
+	}
+
+	$(document).on("mouseenter", "[id^=mutualFriendCount_]", function() {
+
+		var element = $(this);
+		var id = element.attr("id");
+		//alert(id);
+		$(".hover").tooltip({
+			title : fetchMutualFriends,
+			html : true
+		})
+	});
+
+	function fetchMutualFriends() {
+		var friendList = "<p>";
+		var element = $(this);
+		var pid = element.attr("id");
+		var ido = pid.split('_');
+		console.log(ido);
+		console.log(ido);
+		$.ajax({
+			url : "http://localhost:8080/facebook_group6/webapi/users/"+ sessionStorage.id + "/friends/" + ido[1],
+			method : "GET",
+			async : false,success : function(data) {
+				console.log(data);
+				var listOfMutualFriends = data.split(",");
+				for (var j = 0; j < listOfMutualFriends.length; j++) 
+					friendList = friendList + listOfMutualFriends[j] + "<br>";
+			}
+		})
+		return friendList;
+	}
+	
+	$(document).ready(function() {
+		popoverFunc();
+		
+		document.getElementById("navImg").src = "users/"+ sessionStorage.id+ "/"+ sessionStorage.profilePicUrl;
+		document.getElementById("profile").innerHTML = sessionStorage.fName;
+		document.getElementById("profileName").innerHTML = sessionStorage.friend_fname+" "+sessionStorage.friend_lname;
+		document.getElementById("name_timeline").innerHTML = sessionStorage.friend_fname+" "+sessionStorage.friend_lname;
+		document.getElementById("hometown_timeline").innerHTML = sessionStorage.friend_hometown;
+		document.getElementById("currentCity_timeline").innerHTML = sessionStorage.friend_currentCity;
+		document.getElementById("college_timeline").innerHTML = sessionStorage.friend_college;
+		document.getElementById("employer_timeline").innerHTML = sessionStorage.friend_employer;
+		document.getElementById("gradSchool_timeline").innerHTML = sessionStorage.friend_gradSchool;
+		document.getElementById("dob_timeline").innerHTML = sessionStorage.friend_dob;
+		document.getElementById("contact_timeline").innerHTML = sessionStorage.friend_contact;
+		document.getElementById("highSchool_timeline").innerHTML = sessionStorage.friend_highSchool;
+		document.getElementById("ProfileImg").src = "users/" + sessionStorage.friend_id+ "/" + sessionStorage.friend_picUrl;
+		
+		
+
+		// --------------------get posts ajax---------------------------------------------- 
+
+		$
+				.ajax({
+					type : "get",
+					url : "http://localhost:8080/facebook_group6/webapi/users/"
+							+ sessionStorage.friend_id
+							+ "/posts",
+
+					success : function(response) {
+						for (var j = 0; j < response.length; j++) {
+							var post = response[j];
+
+							console.log(post);
+							var postPanel = document
+									.createElement("div");
+							postPanel.setAttribute("class",
+									"panel panel-default");
+							postPanel
+									.setAttribute(
+											"id",
+											"postPanel_"
+													+ post["post_id"]);
+
+							var postPanelBody = document
+									.createElement("div");
+							postPanelBody.setAttribute(
+									"class", "panel-body");
+							postPanelBody
+									.setAttribute(
+											"id",
+											"postPanelBody_"
+													+ post["post_id"]);
+
+							var postMedia = document
+									.createElement("div");
+							postMedia.setAttribute("class",
+									"media");
+							postMedia
+									.setAttribute(
+											"id",
+											"postMedia_"
+													+ post["post_id"]);
+
+							var divImg = document
+									.createElement("div");
+							divImg.setAttribute("class",
+									"media-left");
+							divImg
+									.setAttribute(
+											"id",
+											"divImageId_"
+													+ post["post_id"]);
+							var image = document
+									.createElement("IMG");
+							image.setAttribute("class",
+									"media-object");
+							image
+									.setAttribute(
+											"src",
+											"users/"
+													+ post["user_id"]
+													+ "/"+post["profilePicUrl"]);
+							image.style.width = "40px";
+							divImg.appendChild(image);
+
+							var divName = document
+									.createElement("div");
+							divName.setAttribute("class",
+									"media-body ");
+							divName
+									.setAttribute(
+											"id",
+											"divNameId_"
+													+ post["post_id"]+"_"+post["user_id"]);
+							divName.style.paddingTop = "1px";
+							divName.style.paddingLeft="1px";
+							divName.setAttribute("data-toggle","popover");
+							//divName.setAttribute("data-placement","right");
+							divName.setAttribute("onmouseenter","fun(this)");
+						    divName.setAttribute("data-trigger","hover");
+						   // divName.setAttribute("data-html", "true");
+						    divName.setAttribute("class","hover");
+					
+							
+					//-------------new code for pop over END---------------	
+							var heading = document
+									.createElement("H4");
+							heading.setAttribute("class",
+									"media-heading");
+							heading.innerHTML = post["fullName"];
+							var para = document
+									.createElement("p");
+							para.innerHTML = post["post_date_time"];
+							divName.appendChild(heading);
+							divName.appendChild(para);
+							postMedia.appendChild(divImg);
+							postMedia.appendChild(divName);
+							postPanelBody
+									.appendChild(postMedia);
+							postPanel
+									.appendChild(postPanelBody);
+							var postData = post["post_data"];
+							if (postData["post_data_message"]) {
+								var postDataText = document
+										.createElement("p");
+								postDataText.innerHTML = postData["post_data_message"];
+								postPanelBody
+										.appendChild(postDataText);
+							}
+
+							if (postData["postImage"]) {
+								var postDataImage = document
+										.createElement("IMG");
+								postDataImage.style.height = "200px";
+								postDataImage.style.widht = "200px";
+								postDataImage
+										.setAttribute(
+												"src",
+												"users/"
+														+ post["user_id"]
+														+ "/images/"
+														+ postData["postImage"]);
+								postPanelBody
+										.appendChild(postDataImage);
+							}
+
+							var postPanelFooter1 = document
+									.createElement("div");
+							postPanelFooter1
+									.setAttribute("class",
+											"panel-footer");
+							// postPanelFooter1.style.display="inline";
+
+							var postCommentLink = document
+									.createElement("a");
+							postCommentLink
+									.setAttribute(
+											"id",
+											"postCommentLink_"
+													+ post["post_id"]);
+							postCommentLink
+									.setAttribute(
+											"onClick",
+											"getCommentsLinkFunction(this)");
+							//  postCommentLink.setAttribute("href","getCommentsLinkFunction(this)");
+							// postCommentLink.setAttribute("data-toggle","collapse");
+							//postCommentLink.setAttribute("href","#commentsOnPost_"+post["post_id"]);
+							postCommentLink.style.paddingLeft = "10px";
+							var postShare = document
+									.createElement("a");
+							postShare
+									.setAttribute(
+											"id",
+											"postShare_"
+													+ post["post_id"]);
+							postShare.setAttribute("href",
+									"#");
+							// postShare.setAttribute("onClick","postShareFunction(this)");
+							postShare.innerHTML = "Share";
+							postShare.style.paddingLeft = "10px";
+
+							postPanelFooter1
+									.appendChild(postCommentLink);
+							postPanelFooter1
+									.appendChild(postShare);
+							postPanel
+									.appendChild(postPanelFooter1);
+
+							var postPanelFooter2 = document
+									.createElement("div");
+							postPanelFooter2
+									.setAttribute("class",
+											"panel-footer collapse");
+							// postPanelFooter2.setAttribute("id","postLikeCounts_"+post["post_id"]);
+							postPanelFooter2.style.display = "block";
+							var postLikeCounts = document
+									.createElement("div");
+							postLikeCounts
+									.setAttribute(
+											"id",
+											"postLikeCounts_"
+													+ post["post_id"]);
+							postLikeCounts.style.display = "none";
+							postPanelFooter2
+									.appendChild(postLikeCounts);
+							var likes = post["listOfProfile"];
+							if (likes.length == 1
+									&& (likes[0])["user_id"] == sessionStorage.id) {
+								var postLike = document
+										.createElement("a");
+								postLike
+										.setAttribute(
+												"onClick",
+												"postLikeFunction(this)");
+								//         postLike.setAttribute("href","#");
+								postLike.style.paddingLeft = "10px";
+								postLike.innerHTML = "Unlike";
+								postLike
+										.setAttribute(
+												"id",
+												"postUnlike_"
+														+ post["post_id"]);
+								postPanelFooter1
+										.appendChild(postLike);
+
+								var p = document
+										.createElement("p");
+								p.innerHTML = "You Like this";
+								postLikeCounts
+										.appendChild(p);
+								postLikeCounts.style.display = "block";
+							} else if (likes.length == 1) {
+								var postLike = document
+										.createElement("a");
+								postLike
+										.setAttribute(
+												"onClick",
+												"postLikeFunction(this)");
+								//       postLike.setAttribute("href","#");
+								postLike.style.paddingLeft = "10px";
+								postLike.innerHTML = "Like";
+								postLike
+										.setAttribute(
+												"id",
+												"postLike_"
+														+ post["post_id"]);
+								postPanelFooter1
+										.appendChild(postLike);
+
+								var a = document
+										.createElement("a");
+								var p = document
+										.createElement("p");
+								p.innerHTML = " liked this";
+								a
+										.setAttribute(
+												"id",
+												"postLikesCountLink_"
+														+ post["post_id"]);
+								a.setAttribute("class",
+										"hover");
+								a.setAttribute(
+										"data-placement",
+										"auto");
+								a.setAttribute(
+										"data-toggle",
+										"tooltip");
+								a.setAttribute("data-html",
+										"true");
+
+								a.innerHTML = (likes[0])["first_name"];
+								p.prepend(a);
+								postLikeCounts
+										.appendChild(p);
+								postLikeCounts.style.display = "block";
+							} else if (likes.length > 1) {
+								var i = 0;
+								for (i = 0; i < likes.length; i++) {
+									if ((likes[i])["user_id"] == sessionStorage.id) {
+										var postLike = document
+												.createElement("a");
+										postLike
+												.setAttribute(
+														"onClick",
+														"postLikeFunction(this)");
+										//		              postLike.setAttribute("href","#");
+										postLike.style.paddingLeft = "10px";
+										postLike.innerHTML = "Unlike";
+										postLike
+												.setAttribute(
+														"id",
+														"postUnlike_"
+																+ post["post_id"]);
+										postPanelFooter1
+												.appendChild(postLike);
+										var p = document
+												.createElement("p");
+										p.innerHTML = "You and ";
+										var a = document
+												.createElement("a");
+										if (likes.length - 1 == 1)
+											a.innerHTML = (likes.length - 1)
+													+ " other ";
+										else
+											a.innerHTML = (likes.length - 1)
+													+ " others ";
+										a
+												.setAttribute(
+														"id",
+														"postLikesCountLink_"
+																+ post["post_id"]);
+										a.setAttribute(
+												"class",
+												"hover");
+										a
+												.setAttribute(
+														"data-placement",
+														"auto");
+										a
+												.setAttribute(
+														"data-toggle",
+														"tooltip");
+										a
+												.setAttribute(
+														"data-html",
+														"true");
+										p.appendChild(a);
+										// var p1=document.createElement("p");
+										// p1.innerHTML="liked this";
+										p
+												.appendChild(document
+														.createTextNode("liked this"));
+										postLikeCounts
+												.appendChild(p);
+										postLikeCounts.style.display = "block";
+										break;
+									}
+
+								}
+								if (i == likes.length) {
+									var postLike = document
+											.createElement("a");
+									postLike
+											.setAttribute(
+													"onClick",
+													"postLikeFunction(this)");
+									//            postLike.setAttribute("href","#");
+									postLike.style.paddingLeft = "10px";
+									postLike.innerHTML = "Like";
+									postLike
+											.setAttribute(
+													"id",
+													"postLike_"
+															+ post["post_id"]);
+									postPanelFooter1
+											.appendChild(postLike);
+
+									var p = document
+											.createElement("p");
+									p.innerHTML = (likes[0])["first_name"]
+											+ " and ";
+									var a = document
+											.createElement("a");
+									if (likes.length - 1 == 1)
+										a.innerHTML = (likes.length - 1)
+												+ " other ";
+									else
+										a.innerHTML = (likes.length - 1)
+												+ " others ";
+									a
+											.setAttribute(
+													"id",
+													"postLikesCountLink_"
+															+ post["post_id"]);
+									a.setAttribute("class",
+											"hover");
+									a
+											.setAttribute(
+													"data-placement",
+													"auto");
+									a.setAttribute(
+											"data-toggle",
+											"tooltip");
+									a.setAttribute(
+											"data-html",
+											"true");
+									p.appendChild(a);
+									var p1 = document
+											.createElement("p");
+
+									p
+											.appendChild(document
+													.createTextNode("liked this"));
+									postLikeCounts
+											.appendChild(p);
+									postLikeCounts.style.display = "block";
+
+								}
+
+							} else {
+								var postLike = document
+										.createElement("a");
+								postLike
+										.setAttribute(
+												"onClick",
+												"postLikeFunction(this)");
+								//  postLike.setAttribute("href","#");
+								postLike.style.paddingLeft = "10px";
+								postLike.innerHTML = "Like";
+								postLike
+										.setAttribute(
+												"id",
+												"postLike_"
+														+ post["post_id"]);
+								postPanelFooter1
+										.appendChild(postLike);
+
+							}
+
+							var commentsOnPost = document
+									.createElement("div");
+							commentsOnPost
+									.setAttribute(
+											"id",
+											"commentsOnPost_"
+													+ post["post_id"]);
+							postPanelFooter2
+									.appendChild(commentsOnPost);
+
+							var postComment = document
+									.createElement("div");
+							postComment
+									.setAttribute(
+											"id",
+											"postComment_"
+													+ post["post_id"]);
+							var postCommentInput = document
+									.createElement("INPUT");
+							postCommentInput.setAttribute(
+									"type", "text");
+							postCommentInput.setAttribute(
+									"placeholder",
+									"Write Here!");
+							postCommentInput
+									.setAttribute(
+											"id",
+											"postCommentInput_"
+													+ post["post_id"]);
+							postCommentInput
+									.setAttribute(
+											"onkeydown",
+											"postCommentFunction(this)");
+							postCommentInput.setAttribute(
+									"value", "");
+							postCommentInput.style.width = "90%";
+							postComment
+									.appendChild(postCommentInput);
+							postPanelFooter2
+									.appendChild(postComment);
+							postPanel
+									.appendChild(postPanelFooter2);
+
+							document
+									.getElementById("profilePostCol")
+									.appendChild(postPanel);
+
+							//--------comments count------------
+							var commentsCount = 0;
+							$
+									.ajax({
+										type : "get",
+										async : false,
+										url : "http://localhost:8080/facebook_group6/webapi/comments/"
+												+ post["post_id"],
+										contentType : "application/json",
+										success : function(
+												response) {
+											commentsCount = response.length;
+										}
+									});
+
+							if (commentsCount > 0)
+								postCommentLink.innerHTML = "View "
+										+ commentsCount
+										+ " Comments";
+
+							//         alert(postCommentLink.innerHTML);
+						}
+
+					}
+				});
+	
+	$('[data-toggle="popover"]').popover();
+
+// --------------------get posts ajax---------------------------------------------- 
+		
+	});
+	
+	 
+	
+	function postLikeFunction(x) {
+
+			var id = (x.id).split("_");
+
+			if (id[0] == "postLike") {
+				$
+						.ajax({
+							type : "post",
+							async : false,
+							url : "http://localhost:8080/facebook_group6/webapi/users/"
+									+ sessionStorage.id
+									+ "/posts/"
+									+ id[1]
+									+ "/likes",
+							contentType : "application/json",
+							success : function(response) {
+								document.getElementById("postLike_" + id[1]).innerHTML = "UnLike";
+								document.getElementById("postLike_" + id[1])
+										.setAttribute("id", "postUnlike_" + id[1]);
+
+								//-------------recalculate Like count after 'Like'-----------------------
+
+								$
+										.ajax({
+											type : "get",
+											async : false,
+											url : "http://localhost:8080/facebook_group6/webapi/users/"
+													+ sessionStorage.id
+													+ "/posts/"
+													+ id[1] + "/getLikes",
+											contentType : "application/json",
+											success : function(response1) {
+												var count1 = response1.length;
+												if (count1 == 1) {
+													document
+															.getElementById("postLikeCounts_"
+																	+ id[1]).style.display = "block";
+													$("#postLikeCounts_" + id[1])
+															.empty();
+													var p = document
+															.createElement("p");
+													p.innerHTML = "You Like this";
+													document.getElementById(
+															"postLikeCounts_"
+																	+ id[1])
+															.appendChild(p);
+
+												} else {
+
+													document
+															.getElementById("postLikeCounts_"
+																	+ id[1]).style.display = "block";
+													$("#postLikeCounts_" + id[1])
+															.empty();
+													var p = document
+															.createElement("p");
+													p.innerHTML = "You and ";
+													var a = document
+															.createElement("a");
+													if (response1.length - 1 == 1)
+														a.innerHTML = (response1.length - 1)
+																+ " other ";
+													else
+														a.innerHTML = (response1.length - 1)
+																+ " others ";
+													a.setAttribute("id",
+															"postLikesCountLink_"
+																	+ id[1]);
+													a
+															.setAttribute("class",
+																	"hover");
+													a.setAttribute(
+															"data-placement",
+															"auto");
+													a.setAttribute("data-toggle",
+															"tooltip");
+													a.setAttribute("data-html",
+															"true");
+													p.appendChild(a);
+													// var p1=document.createElement("p");
+													// p1.innerHTML="liked this";
+													p
+															.appendChild(document
+																	.createTextNode("liked this"));
+													document.getElementById(
+															"postLikeCounts_"
+																	+ id[1])
+															.appendChild(p);
+
+												}
+
+											}
+										});
+
+								//-------------recalculate likes count-----------------------
+
+							}
+						});
+
+			} else {
+				$
+						.ajax({
+							type : "put",
+							async : false,
+							data : id[1],
+							url : "http://localhost:8080/facebook_group6/webapi/users/"
+									+ sessionStorage.id
+									+ "/posts/"
+									+ id[1]
+									+ "/likes",
+							contentType : "application/json",
+							success : function(response) {
+
+								document.getElementById("postUnlike_" + id[1]).innerHTML = "Like";
+								document.getElementById("postUnlike_" + id[1])
+										.setAttribute("id", "postLike_" + id[1]);
+
+								//-------------recalculate likes count-----------------------
+
+								$
+										.ajax({
+											type : "get",
+											async : false,
+											url : "http://localhost:8080/facebook_group6/webapi/users/"
+													+ sessionStorage.id
+													+ "/posts/"
+													+ id[1] + "/getLikes",
+											contentType : "application/json",
+											success : function(response1) {
+
+												if (response1) {
+													var count = response1.length;
+
+													if (count == 0) {
+														document
+																.getElementById("postLikeCounts_"
+																		+ id[1]).style = "none";
+														$(
+																"#postLikeCounts_"
+																		+ id[1])
+																.empty();
+													} else if (count == 1) {
+														document
+																.getElementById("postLikeCounts_"
+																		+ id[1]).style.display = "block";
+														$(
+																"#postLikeCounts_"
+																		+ id[1])
+																.empty();
+														var a = document
+																.createElement("a");
+														var p = document
+																.createElement("p");
+														p.innerHTML = " liked this";
+														a.setAttribute("id",
+																"postLikesCountLink_"
+																		+ id[1]);
+														a.setAttribute("class",
+																"hover");
+														a.setAttribute(
+																"data-placement",
+																"auto");
+														a.setAttribute(
+																"data-toggle",
+																"tooltip");
+														a.setAttribute("data-html",
+																"true");
+														a.innerHTML = (response1[0])["first_name"];
+														p.prepend(a);
+														document.getElementById(
+																"postLikeCounts_"
+																		+ id[1])
+																.appendChild(p);
+
+													} else {
+														document
+																.getElementById("postLikeCounts_"
+																		+ id[1]).style.display = "block";
+														$(
+																"#postLikeCounts_"
+																		+ id[1])
+																.empty();
+														var p = document
+																.createElement("p");
+														p.innerHTML = (response1[0])["first_name"]
+																+ " and ";
+														var a = document
+																.createElement("a");
+														if (response1.length - 1 == 1)
+															a.innerHTML = (response1.length - 1)
+																	+ " other ";
+														else
+															a.innerHTML = (response1.length - 1)
+																	+ " others ";
+														a.setAttribute("id",
+																"postLikesCountLink_"
+																		+ id[1]);
+														a.setAttribute("class",
+																"hover");
+														a.setAttribute(
+																"data-placement",
+																"auto");
+														a.setAttribute(
+																"data-toggle",
+																"tooltip");
+														a.setAttribute("data-html",
+																"true");
+														p.appendChild(a);
+														var p1 = document
+																.createElement("p");
+
+														p
+																.appendChild(document
+																		.createTextNode("liked this"));
+														document.getElementById(
+																"postLikeCounts_"
+																		+ id[1])
+																.appendChild(p);
+
+													}
+
+												}
+
+											}
+										});
+								//---------------recalculate likes count-----------------------
+
+							}
+						});
+
+			}
+		}
+
+		function getCommentsLinkFunction(x) {
+
+			var id = (x.id).split("_");
+
+			if ($("#postCommentLink_" + id[1]).text().indexOf("View") != -1) {
+				//	$("#commentsOnPost_"+id[1]).show();
+				document.getElementById("postCommentLink_" + id[1]).innerHTML = "Hide Comments";
+				$
+						.ajax({
+							type : "get",
+							url : "http://localhost:8080/facebook_group6/webapi/comments/"
+									+ id[1],
+							contentType : "application/json",
+							success : function(response) {
+
+								if (response) {
+									$("#commentsOnPost_" + id[1]).empty();
+									for (var i = 0; i < response.length; i++) {
+										var comment = response[i];
+
+										var commentMedia = document
+												.createElement("div");
+										commentMedia.setAttribute("class", "media");
+										commentMedia.setAttribute("id",
+												"commentMedia_"
+														+ comment["comment_id"]);
+
+										var divImg = document.createElement("div");
+										divImg.setAttribute("class", "media-left");
+										divImg.setAttribute("id", "divImageId_"
+												+ comment["comment_id"]);
+										divImg.style.paddingTop = "1px";
+										var image = document.createElement("IMG");
+										image.setAttribute("class", "media-object");
+										image.setAttribute("src", "users/"
+												+ comment["user_id"]
+												+ "/"+comment["profilePicUrl"]);
+										image.style.width = "25px";
+										divImg.appendChild(image);
+
+										var divName = document.createElement("div");
+										divName.setAttribute("class", "media-body");
+										divName.setAttribute("id", "divNameId_"
+												+ comment["comment_id"]);
+										divName.style.paddingTop = "1px";
+										var heading = document.createElement("H4");
+										heading.setAttribute("class",
+												"media-heading");
+										heading.innerHTML = comment["userName"];
+
+										var commentTime = document
+												.createElement("p");
+										commentTime.innerHTML = comment["comment_Date_Time"];
+										var commentPara = document
+												.createElement("p");
+										commentPara.innerHTML = comment["commentMessage"];
+										divName.appendChild(heading);
+										divName.appendChild(commentTime);
+										divName.appendChild(commentPara);
+										commentMedia.appendChild(divImg);
+										commentMedia.appendChild(divName);
+										document.getElementById(
+												"commentsOnPost_" + id[1])
+												.appendChild(commentMedia);
+
+									}
+
+								}
+							}
+						});
+			} else {
+				var commentsCount = 0;
+				$("#commentsOnPost_" + id[1]).empty();
+
+				$
+						.ajax({
+							type : "get",
+							async : false,
+							url : "http://localhost:8080/facebook_group6/webapi/comments/"
+									+ id[1],
+							contentType : "application/json",
+							success : function(response) {
+								commentsCount = response.length;
+							}
+						});
+				if (commentsCount == 0) {
+					$("#postCommentLink_" + id[1]).hide();
+				} else if (commentsCount == 1) {
+
+					$("#postCommentLink_" + id[1]).show();
+					document.getElementById("postCommentLink_" + id[1]).innerHTML = "View "
+							+ commentsCount + " Comment";
+				} else {
+
+					$("#postCommentLink_" + id[1]).show();
+					document.getElementById("postCommentLink_" + id[1]).innerHTML = "View "
+							+ commentsCount + " Comments";
+				}
+
+			}
+
+		}
+
+		function postCommentFunction(x) {
+
+			var id = (x.id).split("_");
+			if (x.value != "" && event.keyCode == 13) {
+
+				if ($("#commentsOnPost_" + id[1]).css('display') == 'none') {
+					$("#commentsOnPost_" + id[1]).empty();
+					$("#commentsOnPost_" + id[1]).show();
+
+				}
+				var comment = {
+					"commentMessage" : x.value
+				}
+
+				$
+						.ajax({
+							type : "post",
+							contentType : "application/json",
+							data : JSON.stringify(comment),
+							url : "http://localhost:8080/facebook_group6/webapi/comments/"
+									+ sessionStorage.id + "/" + id[1],
+							success : function(response) {
+								var commentMedia = document.createElement("div");
+								commentMedia.setAttribute("class", "media");
+								commentMedia.setAttribute("id", "commentMedia_"
+										+ response["comment_id"]);
+
+								var divImg = document.createElement("div");
+								divImg.setAttribute("class", "media-left");
+								divImg.setAttribute("id", "divImageId_"
+										+ response["comment_id"]);
+								divImg.style.paddingTop = "1px";
+								var image = document.createElement("IMG");
+								image.setAttribute("class", "media-object");
+								image.setAttribute("src", "users/"
+										+ response["user_id"] + "/"+response["profilePicUrl"]);
+								image.style.width = "25px";
+								divImg.appendChild(image);
+
+								var divName = document.createElement("div");
+								divName.setAttribute("class", "media-body");
+								divName.setAttribute("id", "divNameId_"
+										+ response["comment_id"]);
+								divName.style.paddingTop = "1px";
+								var heading = document.createElement("H4");
+								heading.setAttribute("class", "media-heading");
+								heading.innerHTML = response["userName"];
+
+								var commentTime = document.createElement("p");
+								commentTime.innerHTML = response["comment_Date_Time"];
+								var commentPara = document.createElement("p");
+								commentPara.innerHTML = response["commentMessage"];
+								divName.appendChild(heading);
+								divName.appendChild(commentTime);
+								divName.appendChild(commentPara);
+								commentMedia.appendChild(divImg);
+								commentMedia.appendChild(divName);
+								document.getElementById("commentsOnPost_" + id[1])
+										.appendChild(commentMedia);
+								document
+										.getElementById("postCommentInput_" + id[1]).value = '';
+
+							}
+						});
+
+			}
+		}
+
+	
+		function friendProfile(x) {
+			friendid = (x.id).split('_');
+	$.ajax({
+						type : "get",
+						contentType : "application/json",
+						url : "http://localhost:8080/facebook_group6/webapi/getfriendProfile/"
+								+ friendid[1],
+						success : function(response) {
+							if(response.user_id==sessionStorage.id)
+								window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+							else{
+							sessionStorage.friend_picUrl = response["profilePicUrl"];
+							sessionStorage.friend_id = response.user_id;
+							sessionStorage.friend_fname = response.first_name;
+							sessionStorage.friend_lname = response.last_name;
+							sessionStorage.friend_hometown = response.home_town;
+							sessionStorage.friend_currentCity = response.current_city;
+							sessionStorage.friend_college = response.college;
+							sessionStorage.friend_employer = response.employer;
+							sessionStorage.friend_gradSchool = response.graduate_school;
+							sessionStorage.friend_dob = response.date_of_birth;
+							sessionStorage.friend_contact = response.contact_no;
+							sessionStorage.friend_highSchool = response.high_school;
+							window.location.href = "http://localhost:8080/facebook_group6/friend_profile.html";
+							}
+						}
+					});
+		}
+	
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="app.js"></script>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <div>
+        <!--  <select ng-model="category" ng-change="updateCategory()">
+            <option value="all">--Category--</option>
+            <option value="business">business</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="gaming">Gaming</option>
+            <option value="general">General</option>
+            <option value="music">Music</option>
+            <option value="politics">Politics</option>
+            <option value="science-and-nature">Science and Nature</option>
+            <option value="technology">Technology</option>
+        </select>-->
+        <select ng-model="selectedSources" ng-options="source.name for source in Sources" ng-change="updateSources()">
+            <option value="">--Sort By New Sources--</option>
+        </select>
+    </div>
+
+    <div class="container" ng-repeat="article in articles">
+        <div class="well">
+            <div class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" ng-src="{{article.urlToImage}}" style="height:100px;width:100px;">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">{{article.title}}</h4>
+                    <p class="text-right">By {{selectedSources.name}}</p>
+                    <p>{{article.description}}...</p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

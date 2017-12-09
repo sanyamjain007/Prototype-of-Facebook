@@ -1,0 +1,124 @@
+
+#navigationBar{
+
+background-color: rgb(46,82,140);
+height: 50px;
+}
+
+#navBarContainer{
+
+	margin-top:10px; 
+
+}
+
+#navBarSearch{
+
+	margin-left: 40px;
+	
+}
+.right-inner-addon{
+
+	position: relative;
+}
+.right-inner-addon input{
+	padding-right:70px; 
+}
+.right-inner-addon i{
+	position: absolute;
+	padding-left:405px;
+	padding-top: 6px;
+	pointer-events:none; 
+}
+
+
+#navBarList{
+
+	display: inline;
+	padding-right:30px;
+	padding-top: 12px;
+
+}
+
+#navBarfriendRequests{
+display: inline;
+
+}
+
+.div-inline{
+    display:inline-block;
+}
+#body{
+
+	margin-top: 50px;
+}
+#col1{
+ background-color:white;
+ height:100%;
+
+}
+#col2{
+background-color:rgb(197,193,198);
+height:100%
+}
+#col3{
+background-color:rgb(218,223,232);
+height:100%;
+
+
+}
+#col4{
+
+background-color:rgb(219,221,224);
+height:100%;
+
+}
+#post{
+ position: absolute;
+ right: 20px;
+ margin-right: 10px;
+ margin-bottom: 1px;
+ padding-right: 10px;
+
+}
+#statusPanel{
+
+background-color:rgb(179,201,187);
+
+}
+#shareWith{
+
+ position: absolute;
+ right: 70px;
+ padding-right: 5px;
+ margin-right: 10px;
+ margin-bottom: 1px;
+}
+#col4UpperPanel{
+
+background-color:white;
+height:100px;
+max-width:300px; 
+position: fixed,absolute;
+}
+
+#col4LowerPanel{
+
+background-color:white;
+height:100px;
+max-width:300px; 
+position: fixed,absolute;
+
+}
+#newsFeeds{
+
+	color: black;
+}
+#messages{
+
+	color: black;
+
+}
+
+.affix{
+	top:40px;
+}

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="fbhome.css">
+ <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-3.1.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+
+
+
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
+<style>
+     @media only screen and (max-width : 540px) 
+            {
+                
+                
+            }
+    .popup-box
+            {
+                z-index:10000000;
+                position: fixed;
+                bottom: 0px;
+                right: 220px;
+                height: 285px;
+                background-color: rgb(237, 239, 244);
+                width: 300px;
+                border: 1px solid rgba(29, 49, 91, .3);
+            }
+            
+            .popup-box .popup-head
+            {
+                background-color: #6d84b4;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                clear: both;
+            }
+            
+            .popup-box .popup-head .popup-head-left
+            {
+                float: left;
+            }
+            
+            .popup-box .popup-head .popup-head-right
+            {
+                float: right;
+                opacity: 0.5;
+            }
+            
+            .popup-box .popup-head .popup-head-right a
+            {
+                text-decoration: none;
+                color: inherit;
+            }
+            
+            .popup-box .popup-messages
+            {
+                height: 225px;
+                overflow-y: scroll;
+            }
+            
+    .test1 {
+width: 70%;
+word-wrap: break-word;
+padding: 0.5em;
+margin-left:0.5em;
+}
+
+.test2 {
+width: 70%;
+word-wrap: break-word;
+padding: 0.5em;
+}
+   
+    </style>
+
+
+</head>
+
+<body>
+	<nav class="navbar navbar-fixed-top">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">
+	        <img src="fblogo.jpg" width="20px"></span>
+	      </a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	    <input id="navBarSearch" type="text" value="" name="navBarSearch" placeholder="Search People" size="40px" onkeydown="search()" style="margin-top:12px">
+		
+	      <div class="nav navbar-nav navbar-right">	
+	  		<div class="btn-toolbar pull-right" role="toolbar">
+	    		<div class="btn-group" role="group">
+	      			<img id="navBarImg"src="pic.jpg" width="20px"> 
+	      				<button id="profile" class="navbar-btn" type="button"></button>
+	    		</div>
+	    		<div class="btn-group" role="group">
+	      			<button id="home"class="navbar-btn" type="button">Home</button>
+	    		</div>
+	    		<div class="btn-group" role="group">
+	      			<button id="find_friend"class="navbar-btn" type="button">Find Friends</button>
+	    		</div>
+	    		<div class="fb-notifications btn-group" role="group">
+	        		<button class="navbar-btn" type="button">
+	          			<span class="glyphicon glyphicon-user"></span>
+	        		</button>
+	        		<button class="fb-notifications navbar-btn" type="button">
+	          			<span class="glyphicon glyphicon-comment"></span>
+	        		</button>
+	        		<button class="fb-notifications navbar-btn" type="button">
+	          			<span class="glyphicon glyphicon-globe"></span>
+	        		</button>
+	    		</div>
+	    		<div class="btn-group" role="group">
+	      			<div class="dropdown btn-group" role="group">
+	        			<button id="dropbtn1" type="button" class="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true">
+	        				<span class="glyphicon glyphicon-triangle-bottom"></span>
+	        			</button>
+				        <ul class="dropdown-menu" aria-labelledby="dropbtn1">
+				          <li><a href="#">Create Page</a></li>
+				          <li role="separator" class="divider"></li>
+				          <li><a href="#">Create Group</a></li>
+				          <li><a href="#">New Group</a></li>
+				          <li role="separator" class="divider"></li>
+				          <li><a href="#">Activity Log</a></li>
+				          <li><a href="#">Settings</a></li>
+				          <li><a id="logout" href="#">Log out</a></li>
+				        </ul>
+	      			</div>
+	    		</div>
+	  		</div>
+		  </div>
+	    </div>
+	  </div><!-- /.container -->
+	</nav>
+	<div class="container-fluid" style="margin-top:60px">
+	  <div class="row">
+	    <div class="col-xs-2">
+			  <ul class="nav nav-pills nav-stacked">
+			  	<li role="presentation">
+					<img id="searchProfileImg" src="pic.jpg" style="width: 35px; float: left"> 
+					<a href="http://localhost:8080/facebook_group6/Profile.html"><span id="name" style="margin-left: 10px; font-size: 15px"></span></a></li>
+			    <li role="presentation">FAVORITES</li>
+			    <!-- The class "active" highlights this item in the list -->
+			    <li role="presentation">
+			      <a id="newsFeeds" href="http://localhost:8080/facebook_group6/fbHome.html"><span class="glyphicon glyphicon-list-alt"></span> News Feed</a>
+			    </li>
+			    <li role="presentation">
+			      <a href="http://localhost:8080/facebook_group6/events.html" style="margin-top:-10px"><span class="glyphicon glyphicon-calendar"></span>Events</a>
+			    </li>
+
+			    <li role="presentation">EXPLORE </li>
+			    <li role="presentation">
+			      <a href="http://localhost:8080/facebook_group6/groups.html"><span class="glyphicon glyphicon-user"></span> Groups</a>
+			    </li>
+			    <li role="presentation">
+			      <a href="http://localhost:8080/facebook_group6/find_friend.html" style="margin-top:-10px"><span class="glyphicon glyphicon-user"></span> Find Friends</a>
+			    </li>
+			  </ul>
+		</div>	
+		<div id="col2" class="col-md-5" >   
+	</div>
+	    <div class="col-md-3"></div>
+	    <div class="col-xs-2" class="panel" style="padding-right:0px;" >
+	      <!-- Chat room -->
+	       <div class="panel-heading"><input type="text" style="width:100%" placeholder="filter"></div>
+          <div class="panel-body" style="padding-right:0px;">
+            <div class="h-scroll" id="chat" style="background-color:white;padding-left:10px;"> </div>
+        </div>
+	    </div>
+	  </div>
+	</div>
+	</body>
+
+<script type="text/javascript">
+function search(){
+	if(event.keyCode==13 && document.getElementById("navBarSearch").value!='')
+	{$("#col2").empty();
+	$.ajax({
+		type: "get",
+		url: "http://localhost:8080/facebook_group6/webapi/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=search&userId="+sessionStorage.id,
+		success: function (response) {
+		console.log(response);
+		if (response != null) {
+
+  			var i;
+  			for (i=0; i < response.length; i++) {
+  				var friend = response[i];
+				console.log(response[i]);
+  				var div1 = document.createElement("div");
+  				div1.setAttribute("id", i);
+  				div1.setAttribute("class","panel panel-default")
+  				var elem1 = document.createElement("IMG");
+  				elem1.setAttribute("height","100");
+  				elem1.setAttribute("width","100");
+  				elem1.setAttribute("src","users/"+ friend["user_id"]+ "/"+friend["profilePicUrl"]);
+  				div1.appendChild(elem1);
+  				var friendName = friend["first_name"]+ " " + friend["last_name"];
+  				var dob = friend["date_of_birth"].slice(0, 10);
+  				var fullName = document.createElement("p");
+  				fullName.appendChild(document.createTextNode(friendName));
+  				var dateOfacebook_group6irth = document.createElement("p");
+  				dateOfacebook_group6irth.appendChild(document.createTextNode(dob));
+  				div1.appendChild(fullName);
+  				div1.appendChild(dateOfacebook_group6irth);		
+  				$.ajax({
+  					type: "get",
+  					url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/isFriend/"+friend["user_id"],
+  					async:false,
+  					success: function (response) {
+  						console.log(response+"profile");
+  						if(response==0)
+  							{
+  							var button = document.createElement("BUTTON");
+			  				button.setAttribute("onClick","myfunction(this)");
+  							button.setAttribute("id","button_addFriend_"+friend["user_id"]);
+  							button.setAttribute("class","btn btn-success pull-right");
+  							button.innerHTML="Add Friend";
+  							div1.appendChild(button);
+  							}
+  						else if(response==2)
+  							{
+  							var button = document.createElement("BUTTON");
+			  				button.setAttribute("onClick","myfunction(this)");
+  							button.setAttribute("class","btn btn-danger pull-right");
+  							button.setAttribute("id","button_cancelRequest_"+friend["user_id"]);
+  							button.innerHTML="cancel Request";
+  							div1.appendChild(button);
+  							}
+  						else if(response==1)
+  							{
+  							var button = document.createElement("BUTTON");
+			  				button.setAttribute("onClick","myfunction(this)");
+  							button.setAttribute("class","btn btn-primary pull-right");
+  							button.setAttribute("id","button_respondRequest_"+friend["user_id"]);
+  							button.innerHTML="respond to Request";
+  							button.setAttribute("disabled",true);
+  							div1.appendChild(button);
+  							}
+  						else
+  							{
+  							var button = document.createElement("BUTTON");
+			  				button.setAttribute("onClick","myfunction(this)");
+  							button.setAttribute("class","btn btn-primary pull-right");
+  							button.setAttribute("id","button_friends_"+friend["user_id"]);
+  							button.innerHTML="friends";
+  							button.setAttribute("disabled",true);
+  							div1.appendChild(button);
+  							}
+  					}
+  					});	
+  				div1.appendChild(document.createElement("hr"));
+  				document.getElementById("col2").appendChild(div1);
+  				console.log(document.getElementById(i+"a"));
+			}
+		} 	
+		}	
+		});
+	}
+}
+
+$("#find_friend").click(function(){
+	window.location.href="http://localhost:8080/facebook_group6/find_friend.html";
+});
+
+$("#profile").click(function(){
+	window.location.href = "http://localhost:8080/facebook_group6/Profile.html";
+});
+
+$("#home").click(function(){
+	window.location.href = "http://localhost:8080/facebook_group6/fbHome.html";
+});
+
+$("#logout").click(function(){
+   sessionStorage.id=null;
+   sessionStorage.fName=null;
+   sessionStorage.lName=null;
+   window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+});
+
+$(document).ready(function(){
+    if(sessionStorage.id=="null"){
+      window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";}
+    else
+    { 
+    	popoverFunc();	
+    	document.getElementById("profile").innerHTML=sessionStorage.fName;
+      document.getElementById("navBarImg").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+     document.getElementById("searchProfileImg").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+      document.getElementById("name").innerHTML="<h4>"+sessionStorage.fName+" "+sessionStorage.lName+"</h4>";
+      if(document.getElementById("navBarSearch").value=='')  
+      { 
+       $.ajax({
+		       type: "get",
+		       url: "http://localhost:8080/facebook_group6/webapi/users/onLoadSearchVal",
+		       success: function (response)
+		       {
+		    	   
+			      document.getElementById("navBarSearch").value=response;
+			      console.log(response+" ready");
+			      
+			      if(document.getElementById("navBarSearch").value!=''){
+			    	  $("#col2").empty();
+			      $.ajax({
+			  		type: "get",
+			  		url: "http://localhost:8080/facebook_group6/webapi/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=search&userId="+sessionStorage.id,
+			  		success: function (response1) {
+			  		console.log(response1+"as");
+			  		if (response1 != null) {
+
+			  			var i;
+			  			for (i=0; i < response1.length; i++) {
+			  				var friend = response1[i];
+console.log(response[i]);
+			  				var div1 = document
+			  						.createElement("div");
+			  				div1.setAttribute("id", i);
+			  				div1.setAttribute("class","panel panel-default")
+			  				var elem1 = document
+			  						.createElement("IMG");
+			  				elem1.setAttribute("height",
+			  						"100");
+			  				elem1.setAttribute("width",
+			  						"100");
+			  				elem1
+			  						.setAttribute(
+			  								"src",
+			  								"users/"
+			  										+ friend["user_id"]
+			  										+ "/"+friend["profilePicUrl"]);
+			  				div1.appendChild(elem1);
+
+			  				var friendName = friend["first_name"]
+			  						+ " " + friend["last_name"];
+			  				var dob = friend["date_of_birth"].slice(
+			  						0, 10);
+			  				var fullName = document
+			  						.createElement("p");
+			  				fullName
+			  						.appendChild(document
+			  								.createTextNode(friendName));
+			  				var dateOfacebook_group6irth = document
+			  						.createElement("p");
+			  				dateOfacebook_group6irth
+			  						.appendChild(document
+			  								.createTextNode(dob));
+			  				div1.appendChild(fullName);
+			  				div1.appendChild(dateOfacebook_group6irth);
+			  				
+			  				
+			  				
+			  				
+			  				$.ajax({
+			  					type: "get",
+			  					url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/isFriend/"+friend["user_id"],
+			  					async:false,
+			  					success: function (response) {
+			  						console.log(response+"profile");
+			  						if(response==0)
+			  							{
+			  							var button = document.createElement("BUTTON");
+						  				button.setAttribute("onClick","myfunction(this)");
+			  							button.setAttribute("id","button_addFriend_"+friend["user_id"]);
+			  							button.setAttribute("class","btn btn-success pull-right");
+			  							button.innerHTML="Add Friend";
+			  							div1.appendChild(button);
+			  							}
+			  						else if(response==2)
+			  							{
+			  							var button = document.createElement("BUTTON");
+						  				button.setAttribute("onClick","myfunction(this)");
+			  							button.setAttribute("class","btn btn-danger pull-right");
+			  							button.setAttribute("id","button_cancelRequest_"+friend["user_id"]);
+			  							button.innerHTML="cancel Request";
+			  							div1.appendChild(button);
+			  							}
+			  						else if(response==1)
+			  							{
+			  							var button = document.createElement("BUTTON");
+						  				button.setAttribute("onClick","myfunction(this)");
+			  							button.setAttribute("class","btn btn-primary pull-right");
+			  							button.setAttribute("id","button_respondRequest_"+friend["user_id"]);
+			  							button.innerHTML="respond to Request";
+			  							button.setAttribute("disabled",true);
+			  							div1.appendChild(button);
+			  							}
+			  						else
+			  							{
+			  							var button = document.createElement("BUTTON");
+						  				button.setAttribute("onClick","myfunction(this)");
+			  							button.setAttribute("class","btn btn-primary pull-right");
+			  							button.setAttribute("id","button_friends_"+friend["user_id"]);
+			  							button.innerHTML="friends";
+			  							button.setAttribute("disabled",true);
+			  							div1.appendChild(button);
+			  							}
+			  					}
+			  					});
+	
+			  			
+			  				
+			  				
+			  				
+			  				
+			  				
+			  				div1.appendChild(document
+			  						.createElement("hr"));
+
+			  				document.getElementById(
+			  						"col2")
+			  						.appendChild(div1);
+			  				console.log(document
+			  						.getElementById(i+"a"));
+			  			}
+
+			  			//setTimeout(location.reload.bind(location),8000);
+			  		} 
+			  			}	
+			  		});
+			      
+			      }
+			      		      
+			   }
+         
+       
+       
+       
+       
+		});
+    
+      }
+    }
+    
+    
+         
+});
+
+
+
+function myfunction(x)
+{
+var id=(x.id).split('_');
+
+console.log("buttonId"+id[2]);
+
+	
+
+var jsonObject={"user_id":id[2]};
+	
+	$.ajax({
+			type: "put",
+			url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/"+id[1],
+			contentType: "application/json",
+			data: JSON.stringify(jsonObject),
+			success: function (response) {
+				console.log(response+"profile");
+				if(id[1]=="addFriend")
+					{
+					document.getElementById("button_addFriend_"+id[2]).setAttribute("id","button_cancelRequest_"+id[2]);
+					document.getElementById("button_cancelRequest_"+id[2]).innerHTML="cancel request";
+					document.getElementById("button_cancelRequest_"+id[2]).setAttribute("class","btn btn-danger pull-right");
+					}
+				else
+					{
+					document.getElementById("button_cancelRequest_"+id[2]).setAttribute("id","button_addFriend_"+id[2]);
+					document.getElementById("button_addFriend_"+id[2]).innerHTML="add Friend";
+					document.getElementById("button_addFriend_"+id[2]).setAttribute("class","btn btn-success pull-right");
+					}
+	
+	}
+	});
+
+
+}
+
+function popoverFunc() {
+    $("#chat").empty();
+   
+    $
+        .ajax({
+            type: "get",
+            url: "http://localhost:8080/facebook_group6/webapi/users/" + sessionStorage.id + "/friends",
+            success: function(response) {
+                if (response != null) {
+                    console.log(response);
+                    for (var i = 0; i < response.length; i++) {
+                        var request = response[i];
+                        var div = document.createElement("div");
+                        div.setAttribute("id", "div_"+request["user_id"]);
+
+                        var name = request["first_name"] + " " + request["last_name"];
+                        var dob = request["date_of_birth"];
+                        var hometown = request["home_town"];
+
+                        var title = "<div class=\"media\">" + "<div class=\"media-left\">" + "<img src=\"users/" + request["user_id"] + "/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">" + "</div>" + "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">" + name + "</a></h4>" + "<p>" + dob + "<br>" + hometown + "</p></div></div>";
+                      
+
+                        var anc = document.createElement("a");
+                        anc.setAttribute("id", "anc_frnd_" + request["user_id"]);
+                       
+
+                        var img = document.createElement("img");
+                        img.setAttribute("src", "users/" + request["user_id"] + "/"+request["profilePicUrl"]);
+                        img.setAttribute("id","frnd_pop_"+request["user_id"]+"_"+request["first_name"]);
+                        img.style.width = "25px";
+                        img.setAttribute("onClick","register_popup(this)");
+                       
+
+                        anc.appendChild(img);
+                        var id=request["first_name"];
+                        var name = document.createElement("a");
+                        name.setAttribute("id","frnd_pop_"+request["user_id"]);
+                        name.innerHTML=request["first_name"]+" "+request["last_name"]; 
+                        //name.setAttribute("href","javascript:register_popup(request.first_name,request.first_name);");
+                         name.setAttribute("class","hover");
+                         name.setAttribute("data-toggle", "popover");
+                         name.setAttribute("data-trigger", "hover");
+                         name.setAttribute("onmouseenter","postNamepop(this)");
+                       
+                       
+                        anc.appendChild(name);
+                        div.appendChild(anc);
+                        document.getElementById("chat")
+                            .appendChild(div);
+
+                        var hr = document.createElement("hr");
+                        document.getElementById("chat").appendChild(hr);
+                      
+                    }
+                }
+            }
+        });
+}
+
+Array.remove = function(array, from, to) {
+var rest = array.slice((to || from) + 1 || array.length);
+array.length = from < 0 ? array.length + from : from;
+return array.push.apply(array, rest);
+}
+
+//this variable represents the total number of popups can be displayed according to the viewport width
+var total_popups = 0;
+
+//arrays of popups ids
+var popups = [];
+
+//this is used to close a popup
+function close_popup(id)
+{
+console.log("in close "+ id);
+for(var iii = 0; iii < popups.length; iii++)
+{
+   if(id == popups[iii])
+   {
+    console.log(popups[iii],id);
+    
+       Array.remove(popups, iii);
+       console.log(popups[iii],id);
+       
+       document.getElementById(id).style.display = "none";
+       document.getElementById(id).remove();
+       console.log(document.getElementById(id));
+       calculate_popups();
+       console.log("close end");
+       for(var i=0; i<popups.length;i++)
+        {
+        console.log(popups[i]);
+        }
+       console.log("close popup");
+       return;
+   }
+}   
+}
+
+//displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+function display_popups()
+{
+console.log("in display popup");
+var right = 220;
+
+var iii = 0;
+for(iii; iii < total_popups; iii++)
+{
+
+   if(popups[iii] != undefined)
+   {
+    console.log("in popup fn if statament"+ popups[iii]);
+       var element = document.getElementById(popups[iii]);
+       element.style.right = right + "px";
+       right = right + 320;
+       element.style.display = "block";
+      // console.log(element);
+   }
+}
+
+for(var jjj = iii; jjj < popups.length; jjj++)
+{
+   var element = document.getElementById(popups[jjj]);
+   element.style.display = "none";
+}
+console.log("end of display popup");
+}
+
+
+//creates markup for a new popup. Adds the id to popups array.
+function register_popup(x)
+
+{
+console.log("in rgister function");
+var popid= x.id;
+console.log(popid);
+var temp =x.id.split('_')[2];
+var id=temp;
+var name = x.id.split('_')[3];
+console.log(name);
+console.log("id in register "+id);
+
+console.log(popups.length);
+//System.out.println("in register function")
+for(var iii = 0; iii < popups.length; iii++)
+{   
+   //already registered. Bring it to front.
+   if(id == popups[iii])
+   {
+    console.log("in if");
+       Array.remove(popups, iii);
+    console.log(popups.length);
+       popups.unshift(id);
+       
+       calculate_popups();
+       
+       
+       return;
+   }
+}               
+
+var element = '<div class="popup-box chat-popup" id="'+ id +'">';
+element = element + '<div class="popup-head">';
+element = element + '<div class="popup-head-left">'+ name +'</div>';
+element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
+element = element + '<div style="clear: both"></div></div><div  id="popup_messages_'+id+'" class="popup-messages"></div>';
+element = element +'<div><input id="chatText_'+id+'"  type="text" onkeyDown="setMessage(this)" style="width:100%;margin-bottom:50px"/></div></div>';
+//console.log("in register"+element);
+//var pop =document.getElementById("pop_upbox");
+//pop.append(element);
+//console.log(pop);
+console.log(element);
+// document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
+$("body").append(element);
+//console.log(document.getElementsByTagName("body")[0].innerHTML);
+popups.unshift(id);
+console.log("popups"+popups.length);
+       
+calculate_popups();
+console.log("end of from regster");
+
+// document.getElementById("popup_messages_"+id).appendChild(document.createTextNode("hello"));
+
+
+$.ajax({
+type : "get",
+url : "http://localhost:8080/facebook_group6/webapi/userMessages/getTextMessages/"+sessionStorage.id+"/"+id,
+success : function(data) {
+
+if(data)
+{
+var len=data.length;
+for(var i=0;i<len;i++)
+{
+var message=data[i];
+if(message.sender_id==sessionStorage.id)
+createDiv(message.message,"alert alert-success  test1 pull-left","popup_messages_"+id,id);
+else
+createDiv(message.message,"alert alert-success test1 pull-right","popup_messages_"+id,id);
+}
+}
+//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+}
+});
+
+
+
+}
+function setMessage(x)
+{
+var id1 = (x.id).split("_");
+if (x.value != "" && event.keyCode == 13)
+{
+var obj={"sender_id":sessionStorage.id,"receiver_id":id1[1],"message":document.getElementById(x.id).value}
+$.ajax({
+type : 'PUT',
+data : JSON.stringify(obj),
+contentType:"application/json",
+url : "http://localhost:8080/facebook_group6/webapi/userMessages/sendTextMessages",
+success : function(data) {
+
+if(data)
+{
+createDiv(data.message,"alert alert-success test1 pull-left","popup_messages_"+id1[1],id1[1]);
+document.getElementById(x.id).value='';
+}
+//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+}
+});
+}
+}
+
+function createDiv(message,cl,id1,id2){
+var Div_1 = document.createElement('div');
+Div_1.className = cl;
+var para=document.createElement('p');
+var node = document.createTextNode(message);
+para.appendChild(node);
+Div_1.appendChild(para);
+var element = document.getElementById(id1);
+element.appendChild(Div_1);
+var objDiv = document.getElementById(id1);
+objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+
+
+
+//calculate the total number of popups suitable and then populate the toatal_popups variable.
+function calculate_popups()
+{
+var width = window.innerWidth;
+if(width < 540)
+{
+   total_popups = 0;
+}
+else
+{
+   width = width - 200;
+   //320 is width of a single popup box
+   total_popups = parseInt(width/320);
+}
+console.log("hello"+total_popups);
+display_popups();
+
+}
+
+//recalculate when window is loaded and also when window is resized.
+window.addEventListener("resize", calculate_popups);
+window.addEventListener("load", calculate_popups);
+
+/*--------------------------------------pop over function-------------------------------------------------  */
+function fun() {
+
+var element = $(this);
+var id = element.attr("id");
+//alert(id);
+$(".hover").popover({
+content : fetchdata1,
+html : true,
+placement:"top"
+});
+}
+
+function fetchdata1() {
+
+var friendList = "<p>";
+var element = $(this);
+var pid = element.attr("id");
+var ido = pid.split('_');
+console.log(ido);
+$.ajax({
+url : "http://localhost:8080/facebook_group6/webapi/users/"
++ ido[2],
+method : "GET",
+async : false,
+//contentType: 'application/json',
+
+success : function(request) {
+console.log(request);
+var name = request["first_name"] + " "
++ request["last_name"];
+var dob = request["date_of_birth"];
+var hometown = request["home_town"];
+
+
+friendList = friendList + "<div class=\"media\">"
++ "<div class=\"media-left\">"
++ "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"
++ "</div>"
++ "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"
++ name + "</a></h4>" + "<p>" + dob
++ "<br>" + hometown
++ "</p></div></div>";
+}
+//return fetch_data;
+});
+console.log(friendList);
+return friendList;
+}
+
+
+/*--------------------------------------pop over function-------------------------------------------------  */
+/*--------------------------------------chat box-------------------------------------------------  */
+function postNamepop(x){
+
+var element=$(x);
+var id=element.attr("id");
+console.log(id);
+$(".hover").popover({
+content:fetchNameim,
+html:true,
+placement:'left'
+});
+}
+
+
+function fetchNameim(){
+console.log("hello");
+var friendList="<p>";
+var element=$(this);
+var pid=element.attr("id");
+var ido = pid.split('_');
+//console.log(ido[2]);;
+$.ajax({
+url:"http://localhost:8080/facebook_group6/webapi/users/"+ido[2],
+method:"GET",
+async:false,
+//contentType: 'application/json',
+   
+   success: function(request){
+    var name = request["first_name"]+" "+request["last_name"];
+             var dob = request["date_of_birth"];
+             var hometown = request["home_town"];
+    friendList=friendList+"<div class=\"media\">"+"<div class=\"media-left\">"+
+                 "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"+
+               "</div>"+
+               "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"+name+"</a></h4>"+
+                 "<p>"+dob+"<br>"+hometown+"</p></div></div>";
+  //friendList = friendList+"First Name :"+data.first_name+"<br>"+"Last Name :"+data.last_name+"<br>"+"City :"+data.home_town+"<br>"+"Date Of birth:"+data.date_of_birth;
+
+   }
+
+});
+console.log(friendList);
+return friendList;
+}
+
+
+
+</script>
+</html>

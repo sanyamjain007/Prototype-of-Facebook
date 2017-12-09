@@ -1,0 +1,89 @@
+body {
+  background-color: #e9eaed;
+}
+
+.navbar {
+  background-color: #4c66c1;
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-brand:hover {
+  color: white;
+}
+
+.navbar button,
+.navbar button:hover {
+  background-color: transparent;
+  border: none;
+  color: #2e467c;
+}	
+
+/* Make the button white if clicked on, and remain white after clicking.
+   Facebook normally opens up a menu when you do this.
+   :active = user is currently interacting with the button.
+   :focus = user is currently interacting or has just interacted with the
+   button.
+   :active:focus = both at the same time
+   We have to override all of these combinations, since Bootstrap has separate
+   rules for them.*/
+.navbar button:active,
+.navbar button:focus,
+.navbar button:active:focus {
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  box-shadow: none;
+ }
+
+ /* Search button style -- overrides the above two rules for the search
+   button */
+.navbar form button,
+.navbar form button:hover,
+.navbar form button:focus,
+.navbar form button:active,
+.navbar form button:active:focus {
+  background-color: lightgrey;
+  color: black;
+  width: 50px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top: 1px solid rgb(204, 204, 204);
+  border-bottom: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+  outline: none;
+  box-shadow: none;
+}
+
+/* Navbar button style when the button has notifications.
+   Apply same style when the user is hovering the mouse over the button. */
+button.fb-notifications,
+button.fb-notifications:hover {
+  color: white;
+}
+
+.fb-left-sidebar .nav > li > a:active,
+.fb-left-sidebar .nav > li > a:focus,
+.fb-left-sidebar .nav > li > a:active:focus,
+.fb-left-sidebar .nav > li.active > a:active,
+.fb-left-sidebar .nav > li.active > a:focus,
+.fb-left-sidebar .nav > li.active > a:active:focus {
+  background-color: transparent;
+  color: black;
+}
+
+.navbar .badge {
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  padding-left: 4px;
+  padding-right: 4px;
+  border: 1px solid black;
+  /* Offset the badge a bit so it hovers over the glyphicon. */
+  right: 8px;
+  top: -10px;
+}
+
+#name{
+  font-color:black;
+}

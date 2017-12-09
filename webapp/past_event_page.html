@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="fbhome.css">
+    
+</head>
+<body>
+<nav class="navbar navbar-fixed-top navbar-default" style="z-index:100000">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="fblogo.jpg" width="20px"></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <input id="navBarSearch" type="text" value="" name="navBarSearch"
+			placeholder="Search People" size="50px" onkeydown="search()" style="margin-top: 12px">
+      <div class="nav navbar-nav navbar-right">	
+  	<div class="btn-toolbar pull-right" role="toolbar" style="margin-top:5px">
+	    <div class="btn-group" role="group">
+	      <img id="navPic" src="pic.jpg" width="25px"> 
+	      <button id="profile" class="navbar-btn" type="button">Priyank</button>
+	      <button id="home" class="navbar-btn" type="button">Home</button>
+	      <button class="navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-user"></span>
+	      </button>
+	      <button class="fb-notifications navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-comment"></span>
+	      </button>
+	      <button class="fb-notifications navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-globe"></span>
+	      </button>
+	    </div>
+	    <div class="btn-group" role="group">
+	      <div class="dropdown btn-group" role="group">
+	        <button id="dropbtn1" type="button" class="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true">
+	        	<span class="glyphicon glyphicon-triangle-bottom"></span>
+	        </button>
+	        <ul class="dropdown-menu" aria-labelledby="dropbtn1">
+	          <li><a href="#">Create Page</a></li>
+	          <li role="separator" class="divider"></li>
+	          <li><a href="#">Create Group</a></li>
+	          <li><a href="#">New Group</a></li>
+	          <li role="separator" class="divider"></li>
+	          <li><a href="#">Activity Log</a></li>
+	          <li><a href="#">Settings</a></li>
+	          <li><a id="logout" href="#">Log out</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+  </div>
+    </div>
+  </div><!-- /.container -->
+</nav>
+
+<div class="row" style="margin-top:70px">
+  <div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked" style="float:right">
+      <div class="row">
+        <div class="col-xs-3"><img id="profilePic" src="pic.jpg" style="width:30px"></div>
+        <div class="col-xs-9"><a id="profileFullName" href="#">Priyank Sharma</a><a href="#" style="font-size:12px"><br>Edit Profile</a></div>
+      </div>
+      <li style="margin-top:20px;margin-bottom:10px"><span>MY EVENTS</span></li>
+      <li><a href="#" data-toggle="modal" data-target="#createEventModal" style="padding:0px;margin-left:15px">
+      		<span class="glyphicon glyphicon-plus-sign"></span> Create</a></li>
+    </ul>  
+  </div>
+
+  <div class="col-xs-5">
+    <div class="event panel panel-default" style="margin-top:10px;">
+        <div class="panel-body" style="padding:0px">
+          <div>
+            <img src="backgroundImage.jpg" width="100%" height="250px">
+          </div>
+          <div class="row">
+            <div class="col-xs-5" style="padding:10px;padding-left:30px">
+              Starts on- <h4 id="start_date_1">March 25th</h4>
+            </div>
+            <div class="col-xs-7" style="padding:10px;padding-left:30px">
+              <span id="event_name_1" style="font-size:20px;color:#3b5999">Music Is Our Mantra Presents HillTop Night Ft Tristan</span>
+              	<br>Hosted by <a id="hosted_by_1" href="#">Someone</a> 
+            </div>
+          </div>
+          <div class="btn-group" role="group" style="padding-left:20px">
+            <button type="button" class="btn btn-primary disabled" style="border:1px solid "><span class="glyphicon glyphicon-ok"></span><span id="status"> Going</span></button>
+          </div> 
+          <div class="media"  style="padding-left:20px">
+            <div class="media-left media-middle">
+              <span class="glyphicon glyphicon-time"></span>
+            </div>
+            <div class="media-right media-middle">Starts: <b><span id="start_date_2">25th March</span></b> - Ends: <b><span id="end_date_1">25th April</span></b></div>
+          </div>
+          <div class="media" style="padding-left:20px">
+            <div class="media-left media-middle">
+              <span class="glyphicon glyphicon-map-marker"></span>
+            </div>
+            <div class="media-right media-middle"><b><span id="location_1">Pebble Palace</span></b></div>
+          </div>
+          </div><br>
+      </div>
+      
+      <!-- event create modal -->
+      <div id="createEventModal" class="modal fade" role="dialog" style="z-index:1000000">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Create a New Event</h4>
+				</div>
+				<div class="modal-body">
+				Basic information about your event	
+					<form class="form" id="createEvent" method="post">
+						<div class="form-group" style="padding:40px">	
+							<div>	
+								<b style="margin-right:50px">Event Name</b>
+								<input id="eventName" name="event_name" type="text" placeholder="  Enter Event Name" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Location</b>
+								<input id="eventLoc" name="location" type="text" placeholder="  Enter event venue" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Start Date</b>
+								<input type="date" name="start_date" id="eventStart" name="dob" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">End Date</b>
+								<input type="date" name="end_date" id="eventEnd" name="dob" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Description</b>
+								<input type="textArea" name="description" id="eventDesc" placeholder=" Add a description" name="dob" style="width:300px;float:right"
+									style="resize:none">
+							</div><br>
+							<input type="submit" value="Submit" class="btn btn-warning" />		
+						</div>
+					</form>
+				</div>
+            	<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- upload photo pic -->
+	<div id="uploadPhotoModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Upload Photo</h4>
+						</div>
+						<div class="modal-body">
+							<form id="uploadPic"
+								action="http://localhost:8080/facebook_group6/webapi/users/uploadImage"
+								method="post" enctype="multipart/form-data">
+								<p id="uploadPhoto">
+									Select a file : <input type="file" name="file" size="45"
+										class="btn btn-success" />
+								</p>
+								<input type="text" name="userId" id="PhotoId"
+									value="anupam.awasthi1@gmail.com" style="display: none;">
+								<input type="submit" value="Upload It" class="btn btn-warning" />
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="eventInviteModal" role="dialog">
+        		<div class="modal-dialog">
+		          <!-- Modal content-->
+		          <div class="modal-content">
+		            <div class="modal-header">
+		              <button type="button" class="close" data-dismiss="modal">&times;</button>
+		              <h4 class="modal-title">Invite Friends</h4>
+		            </div>
+		            <div id="eventInviteModalBody" class="modal-body"></div>
+		            <div class="modal-footer">
+		              <button type="button" class="btn btn-default"
+		                data-dismiss="modal">Close</button>
+		            </div>
+		          </div>
+        	</div>
+      	</div>
+      	
+      	<div class="panel panel-default">
+        <div class="panel-body"><b style="font-size:18px">Details</b><hr style="padding:0px;margin:5px">
+          <div>
+            <h4><b id="event_name_2" style="color:#3b5999">default event name</b></h4>
+          </div>
+          <div style="font-size:14px">
+          		Starts at - <span id="start_date_3">default start date</span><br>
+           		Event managed by - <a href="#" id="hosted_by_2">default hosted by</a><br>
+           		Venue - <span id="location_2">default location</span>
+          </div><hr>
+          <h4 id="description">This is one of the most popular event in your area.</h4>
+        </div>
+      </div>
+      
+      <!-- event summary -->
+      <div class="panel panel-default" style="margin-top:20px">
+      	  <button id="summaryButton" class="btn btn-primary" style="margin:10px;display:none"> 	Edit Summary</button>
+          	<div class="panel-body" id="summaryText" style="display:none">   
+            	<form  method="post"  id="post_form">
+					<div class="row">
+						<div class="col-md-2"><img id="postPic" src="pic.jpg" width="100%"/></div>   
+	  					<div class="col-md-10">
+	  						<textarea name="summaryArea" class="form-control" id="feedbox" rows="3" placeholder="Write summary.." style="resize:none"></textarea><br>
+	  						<input type="submit" class="btn btn-primary" style="float:right;" value="Post">
+	 				    </div>
+					</div>
+				</form>    
+          	</div>    <!-- panel body ends -->
+        </div>    <!-- panel ends -->
+        
+        <div class="panel panel-default" style="margin-top:20px;">
+          	<div class="panel-body">
+          		<h4 id="summary" style="word-wrap: break-word;">No Summary</h4>     
+          	</div>
+          	    <!-- panel body ends -->
+        </div>    <!-- panel ends -->
+        
+    </div>
+    <div class="col-xs-3"></div>
+    <div class="col-xs-2 panel" style="padding-right:0px" >
+  	   <!-- Chat room -->
+	   <div class="panel-header"><input type="text" style="width:100%" placeholder="filter"></div>
+       <div class="panel-body" style="padding-right:0px;">
+            <div class="h-scroll" id="chat" style="background-color:white;padding-left:10px;"></div>        
+       </div>
+  </div>
+</div>
+</body>
+
+<script>
+
+$(document).ready(function(){
+	if(sessionStorage.id=="null")
+		window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";		    
+	else{
+		popoverFunc();
+		document.getElementById("profile").innerHTML=sessionStorage.fName;
+		document.getElementById("navBarSearch").value='';
+		document.getElementById("profileFullName").innerHTML=sessionStorage.fName+" "+sessionStorage.lName;
+		document.getElementById("navPic").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+		document.getElementById("postPic").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+		document.getElementById("profilePic").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+		document.getElementById("status").innerHTML=" "+sessionStorage.status;
+		document.getElementById("event_name_1").innerHTML="<h3>"+sessionStorage.event_name+"</h3>";
+		document.getElementById("event_name_2").innerHTML=sessionStorage.event_name;
+		document.getElementById("location_1").innerHTML=sessionStorage.location;
+		document.getElementById("location_2").innerHTML=sessionStorage.location;
+		document.getElementById("hosted_by_1").innerHTML=sessionStorage.hosted_by;
+		document.getElementById("hosted_by_2").innerHTML=sessionStorage.hosted_by;
+		document.getElementById("start_date_1").innerHTML=sessionStorage.start_date;
+		document.getElementById("start_date_2").innerHTML=sessionStorage.start_date;
+		document.getElementById("start_date_3").innerHTML=sessionStorage.start_date;
+		document.getElementById("end_date_1").innerHTML=sessionStorage.end_date;
+		document.getElementById("description").innerHTML=sessionStorage.description;
+		document.getElementById("summary").innerHTML=sessionStorage.summary;
+		
+		//check whether user_id = hosted_id. Hence show the summary button
+		if(sessionStorage.fName == sessionStorage.hosted_by.split(' ')[0])
+			$("#summaryButton").show();
+	}
+});
+
+$("#summaryButton").click(function() {
+	$("#summaryText").show();
+});
+	
+$("#home").click(function() {
+	window.location.href = "http://localhost:8080/facebook_group6/fbHome.html";
+});
+
+$("#profile").click(function(){
+	window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+});
+
+$("#profileFullName").click(function(){
+	window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+});
+
+$("#logout").click(function() {
+	sessionStorage.id = null;
+	sessionStorage.fName = null;
+	sessionStorage.lName = null;
+	sessionStorage.homeTown = null;
+	sessionStorage.contact = null;
+	sessionStorage.dob = null;
+	sessionStorage.book=null;
+	window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+});
+
+$('#post_form').submit(function() {
+	$.ajax({
+		type : "post",
+		url : "http://localhost:8080/facebook_group6/webapi/users/"+ sessionStorage.event_id+"/addSummary",
+		data : $('#post_form').serialize(),
+		success : function(response) {
+			if (response != null) {
+				sessionStorage.summary = response;
+				document.getElementById("summary").innerHTML=response;
+				document.getElementById("feedbox").value="";
+			}			
+		}
+	});
+	return false;
+});
+
+var form1 = $('#createEvent');
+	form1.submit(function () {
+	$.ajax({
+		type: form1.attr('method'),
+		url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/events",
+		data: form1.serialize(),
+		success: function (response) {			
+	    	console.log(response);
+	    	if(response!=null){
+	    		sessionStorage.event_id=response.event_id;
+	    		sessionStorage.event_name=response.event_name;
+	    		sessionStorage.hosted_by=response.hosted_by;
+	    		sessionStorage.start_date=response.start_date;
+	    		sessionStorage.end_date=response.end_date;
+	    		sessionStorage.location=response.location;
+	    		sessionStorage.description=response.description;
+	    		sessionStorage.status=response.status;
+	    		window.location.href = "http://localhost:8080/facebook_group6/event_page.html";
+	    	}
+	    	else
+	    		alert("Error redirectin to event page!!!");
+	    }
+	});
+	return false;
+});	
+	
+	function countGoingAndInterested(){
+		$.ajax({
+			type: "get",
+			url: "http://localhost:8080/facebook_group6/webapi/events/getCount/"+sessionStorage.event_id,
+			contentType: "application/json",
+			success: function (response) {
+				if(response!=null){
+					document.getElementById("goingCount").innerHTML=response[0];
+					document.getElementById("interestedCount").innerHTML=response[1];
+				}
+				else
+					alert("null response in getting count!")
+			}
+		});
+	}
+	
+	function popoverFunc(){   
+	    $("#chat").empty();            
+	        $.ajax({
+	        	type  : "get",
+	            url   : "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/friends",
+	            success: function(response){     
+	              if(response!=null){
+	            	console.log(response);
+	                for(var i=0;i<response.length;i++)
+	                {
+	                  var request = response[i];
+	                  var div = document.createElement("div");
+	                  div.setAttribute("id",request["user_id"]);
+	                  
+	                  var name = request["first_name"]+" "+request["last_name"];
+	                  var dob = request["date_of_birth"];
+	                  var hometown = request["home_town"];
+	                  var test = request["test"];
+	                  
+	                  var title="<div class=\"media\">"+"<div class=\"media-left\">"+
+	                      	"<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"+
+	                    	"</div>"+
+	                   	 	"<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"+name+"</a></h4>"+
+	                      	"<p>"+dob+"<br>"+hometown+"<br>"+test+"</p></div></div>";
+
+	                  var anc = document.createElement("a");
+	                  anc.setAttribute("id","anc_"+request["user_id"]);
+	                  anc.setAttribute("href","#");
+	                  anc.setAttribute("data-toggle","popover");
+	                  anc.setAttribute("data-trigger", "hover");
+	                  anc.setAttribute("data-content", title);
+	                  anc.setAttribute("data-placement","left");
+	                  anc.setAttribute("data-html","true");
+	                 
+	                  var img = document.createElement("img");
+	                  img.setAttribute("src","users/"+request["user_id"]+"/"+request["profilePicUrl"]);
+	                  img.style.width = "25px";
+
+	                  anc.appendChild(img);
+	                 
+	                  var name = document.createTextNode(request["first_name"]+" "+request["last_name"]);
+	                  anc.appendChild(name);
+	                  div.appendChild(anc);
+	                  document.getElementById("chat").appendChild(div);
+
+	                  var hr = document.createElement("hr");
+	                  document.getElementById("chat").appendChild(hr);
+	                  $('[data-toggle="popover"]').popover();
+	                }
+	              }
+	            }
+	          });
+	    }
+	
+	function search(){	
+		console.log(document.getElementById("navBarSearch"));
+		if(event.keyCode==13 && document.getElementById("navBarSearch").value!=''){
+			$.ajax({
+				type: "get",
+				url: "http://localhost:8080/facebook_group6/webapi/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=home"+"&userId="+sessionStorage.id,
+				success: function (response) {
+					console.log(response+"profile");
+					window.location.href = "http://localhost:8080/facebook_group6/search.html";		
+				}
+			});
+		}
+	}
+
+</script>
+</html>    

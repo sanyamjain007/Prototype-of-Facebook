@@ -1,0 +1,573 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="dist/css/bootstrap-theme.min.css">
+<script src="dist/js/jquery-3.1.1.js"></script>
+<script src="dist/js/bootstrap.js"></script>
+<script src="dist/font/"></script>
+    <link rel="stylesheet" type="text/css" href="fbhome.css">
+</head>
+<body>
+<nav class="navbar navbar-fixed-top"
+		style="display: flex; align-items: center; justify-content: center">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> <img src="fblogo.jpg"
+					width="20px">
+				</a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<input id="navBarSearch" type="text" value="" name="navBarSearch"
+					placeholder="Search People" size="50px" onkeydown="search()"
+					style="margin-top: 12px">
+				<div class="nav navbar-nav navbar-right">
+					<div class="btn-toolbar pull-right" role="toolbar">
+						<div class="btn-group" role="group">
+							<img id="navPic" src="pic.jpg" width="40px" height="40px"
+								style="padding: 0px">
+							<button id="profile" class="navbar-btn" type="button">Priyank</button>
+							<button id="home" class="navbar-btn" type="button">Home</button>
+							<button class="navbar-btn" type="button">
+								<span class="glyphicon glyphicon-user"></span>
+							</button>
+							<button class="fb-notifications navbar-btn" type="button">
+								<span class="glyphicon glyphicon-comment"></span>
+							</button>
+							<button class="fb-notifications navbar-btn" type="button">
+								<span class="glyphicon glyphicon-globe"></span>
+							</button>
+						</div>
+						<div class="btn-group" role="group">
+							<div class="dropdown btn-group" role="group">
+								<button id="dropbtn1" type="button"
+									class="btn btn-default dropdown-toggle navbar-btn"
+									data-toggle="dropdown" aria-haspopup="true">
+									<span class="glyphicon glyphicon-triangle-bottom"></span>
+								</button>
+								<ul class="dropdown-menu" aria-labelledby="dropbtn1">
+									
+									<li><a id="logout" href="#">Log out</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+	</nav>
+<div class="row" style="margin-top:40px">
+  <div class="col-xs-10">
+    <div style="background:white;margin-top:14px;height:40px">
+         <a id ="grps_btn" href="http://localhost:8080/facebook_group6/groups.html" type="button" class="btn btn-success btn-md" style="margin-left:60px">Groups</a>
+        <a id ="allgrp_btn"  href="http://localhost:8080/facebook_group6/allgroups.html" type="button" class="btn btn-success btn-md" style="margin-right:300px">Discover Groups</a>
+    
+        <a id ="grp_btn" type="button" class="btn btn-success btn-md" data-target="#createGroupModal" data-toggle="modal" style="float:right;margin-right:10px"><span class="glyphicon glyphicon-plus"></span> Create Group</a>
+    </div>
+
+    <div style="margin-left:60px;margin-right:50px;margin-top:15px">  
+    <!-- first panel -->
+      <div class="event panel panel-default" id="panel1">
+      
+           <div class="panel-body">
+            <h5 id="pendinggroups" style="margin-top:0px"><b>Pending Invites</b></h5><hr>
+          <div id="pgroupRows" class="row">
+         <!--   <div  id = "div1">
+             <div class="col-xs-6" >
+                <div class="media">
+                  <div class="media-left media-top"><img src="groupicon.jpg" width="100px" height="90px"></div>
+                  <div class="media-body">
+                    <a  id="pleftgroup"  href="#"></a><br>
+                   -->
+                 <!--     <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary">Join</button>
+                      <button type="button" class="btn btn-secondary">Decline</button>
+                    </div> -->
+                <!--   </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="media">
+                  <div class="media-left media-top"><img src="groupicon.jpg" width="100px" height="90px"></div>
+                  <div class="media-body">
+                    <a id="prightgroup"  href="#"></a><br>
+                   -->
+                   <!--   <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="button" class="btn btn-primary">Join</button>
+                      <button type="button" class="btn btn-secondary">Decline</button>
+                    </div>   -->
+                <!--   </div>
+                </div>
+              </div>
+              <div class="col-xs-5">
+              </div>  -->
+            </div>  
+          </div>
+      </div>
+
+      <!-- second panel -->
+      <div class="event panel panel-default">
+          <div class="panel-body">
+            <h5 style="margin-top:0px"><b>Groups You Manage</b></h5><hr>
+             <div id="cgroupRows" class="row">
+            <!--  <div class="row">
+              <div class="col-xs-6">
+                <div class="media">
+                  <div class="media-left media-top"><img src="groupicon.jpg" width="100px" height="90px"></div>
+                  <div class="media-body">
+                    <a id="cleftgroup"  href="#"></a><br>
+                    <br><br>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="media">
+                  <div class="media-left media-top"><img src="groupicon.jpg" width="100px" height="90px"></div>
+                  <div class="media-body">
+                    <a id="crightgroup"  href="#"></a><br>
+                   
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="col-xs-5">
+              </div>    
+            </div>-->
+          </div>
+      </div>
+
+      <!-- third panel -->
+      <div class="event panel panel-default">
+          <div class="panel-body">
+            <h5 style="margin-top:0px"><b>Your Groups</b><h5><hr>
+            <div id="jgroupRows" class="row">
+    </div>
+  </div>
+
+ 
+
+<!--create group modal-->
+			<div id="createGroupModal" class="modal fade" role="dialog" style="z-index:20000000">
+				<div class="modal-dialog">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Create New Group</h4>
+							</div>
+							<div class="modal-body">
+							<form class="form-horizontal" id="createGroup" method="post">
+							<div class="form-group">
+									
+									<div class="col-sm-6" >
+									<label class="control-label col-sm-8" for="group_name">Name your group</label>
+										<input type="text" class="form-control" id="group_name"
+											placeholder="Enter Group Name" name="group_name"/>
+											<input type="submit" value="Submit" class="btn btn-warning" />
+									
+									</div>
+								</div>
+						</form>
+					</div>
+                            <div class="modal-footer">
+								
+							</div>
+				</div>
+			</div>
+</div>
+</body>
+
+<script type="text/javascript"> 
+	
+	
+$("#home")
+.click(
+		function() {
+
+			window.location.href = "http://localhost:8080/facebook_group6/fbHome.html";
+		});
+
+$("#profile").click(function(){
+window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+
+});
+$("#logout")
+.click(
+		function() {
+
+			sessionStorage.id = null;
+			sessionStorage.fName = null;
+			sessionStorage.lName = null;
+			sessionStorage.homeTown = null;
+			sessionStorage.contact = null;
+			sessionStorage.dob = null;
+			sessionStorage.book=null;
+			window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+		});
+
+	  $(document).ready(function(){  
+		  
+		  document.getElementById("navPic").setAttribute("src","users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl);
+		 
+		$.ajax({
+					
+						type : "get",
+						url : "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/groups",
+						success : function(response) {
+								
+							console.log(response);
+							
+							if (response != null) {
+									
+									var i;
+									var grouptype;
+									for (i = 0; i < response.length ; i++) 
+									{   var request=response[i];
+								
+											
+											var requestMedia=document.createElement("div");
+											requestMedia.setAttribute("class", "media");
+											requestMedia.setAttribute("id","requestMedia_"+request["group_id"]);
+											var requestCol=document.createElement("div");
+											requestCol.setAttribute("class","col-xs-8");
+											
+											
+											
+											 var divImg=document.createElement("div");
+												 divImg.setAttribute("class","media-left");
+												 divImg.setAttribute("id","divImageId_"+request["group_id"]);
+											     var image=document.createElement("IMG");
+												     image.setAttribute("class","media-object");
+												     image.setAttribute("src","groupicon.jpg");
+												     image.style.width = "40px";
+											     divImg.appendChild(image);
+											 
+											 var divName=document.createElement("div");
+											     divName.setAttribute("class", "media-body");
+								              //   divName.setAttribute("id","divNameId_"+request["user_id"]);
+								                 divName.style.paddingTop="10px";
+								                 var link=document.createElement("a");
+								                 //	link.setAttribute("href","group_page.html");
+								                     link.setAttribute("class","media-heading");
+								                     link.setAttribute("onClick","linktogroupfunction(this);");
+									                 link.setAttribute("id",(request["group_id"]+"_"+request["created_by"]));
+								                     link.innerHTML="<h4>"+request["group_name"]+"</h4>";
+								                 
+								                 divName.appendChild(link);
+								               requestCol.appendChild(divImg);
+								               requestCol.appendChild(divName);
+								               
+								              
+								              
+								              // requestMedia.appendChild(requestCol);
+								               if(request["type"]=="p")
+												{
+								            	   var buttonCol= document.createElement("div");
+									               buttonCol.setAttribute("class","col-xs-4");
+									                var  buttonToolbar=document.createElement("div");
+									                     buttonToolbar.setAttribute("class", "btn-toolbar");
+									                     buttonToolbar.setAttribute("role", "toolbar");
+									                     buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["group_id"]);
+									                     buttonToolbar.setAttribute("aria-label","...");
+									                     buttonToolbar.style.paddingTop="15px";
+									                     
+									                var  buttonGroup =document.createElement("div");
+									                     buttonGroup.setAttribute("class","btn-group");
+									                     buttonGroup.setAttribute("role","group");
+									                     buttonGroup.setAttribute("aria-label","...");
+									                      var joinButton=document.createElement("BUTTON");
+									                        joinButton.setAttribute("onClick","groupJoinfunction(this)");
+									                        joinButton.setAttribute("id","button_joingroup_"+request["group_id"]);
+									                        joinButton.setAttribute("class","btn btn-success");
+									                        joinButton.innerHTML="Join";
+									    					buttonGroup.appendChild(joinButton);
+									                     var declineButton=document.createElement("BUTTON");
+									                        declineButton.setAttribute("onClick","declineInvitefunction(this)");
+									                        declineButton.setAttribute("id","button_declineInvite_"+request["group_id"]);
+									                        declineButton.setAttribute("class","btn btn-danger");
+									                        declineButton.innerHTML="Decline";
+									    					buttonGroup.appendChild(declineButton);
+									    			buttonToolbar.appendChild(buttonGroup);
+									    			buttonCol.appendChild(buttonToolbar);
+									    			requestMedia.appendChild(requestCol);
+									    			requestMedia.appendChild(buttonCol);
+									               
+								               document.getElementById("pgroupRows").appendChild(requestMedia);
+										
+										}
+										else if(request["type"]=="c")
+										{
+											 var buttonCol= document.createElement("div");
+								               buttonCol.setAttribute("class","col-xs-4");
+								                var  buttonToolbar=document.createElement("div");
+								                     buttonToolbar.setAttribute("class", "btn-toolbar");
+								                     buttonToolbar.setAttribute("role", "toolbar");
+								                     buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["group_id"]);
+								                     buttonToolbar.setAttribute("aria-label","...");
+								                     buttonToolbar.style.paddingTop="15px";
+								                     
+								                var  buttonGroup =document.createElement("div");
+								                     buttonGroup.setAttribute("class","btn-group");
+								                     buttonGroup.setAttribute("role","group");
+								                     buttonGroup.setAttribute("aria-label","...");
+								                      var joinButton=document.createElement("BUTTON");
+								                        joinButton.setAttribute("onClick","groupLeavefunction(this)");
+								                        joinButton.setAttribute("id","button_leavegroup_"+request["group_id"]);
+								                        joinButton.setAttribute("class","btn btn-success");
+								                        joinButton.innerHTML="Leave";
+								    					buttonGroup.appendChild(joinButton);
+								                    
+								    			buttonToolbar.appendChild(buttonGroup);
+								    			buttonCol.appendChild(buttonToolbar);
+								    			requestMedia.appendChild(requestCol);
+								    			requestMedia.appendChild(buttonCol);
+								               
+											document.getElementById("cgroupRows").appendChild(requestMedia);
+											
+										}
+										else
+										{
+											 var buttonCol= document.createElement("div");
+								               buttonCol.setAttribute("class","col-xs-4");
+								                var  buttonToolbar=document.createElement("div");
+								                     buttonToolbar.setAttribute("class", "btn-toolbar");
+								                     buttonToolbar.setAttribute("role", "toolbar");
+								                     buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["group_id"]);
+								                     buttonToolbar.setAttribute("aria-label","...");
+								                     buttonToolbar.style.paddingTop="15px";
+								                     
+								                var  buttonGroup =document.createElement("div");
+								                     buttonGroup.setAttribute("class","btn-group");
+								                     buttonGroup.setAttribute("role","group");
+								                     buttonGroup.setAttribute("aria-label","...");
+								                      var joinButton=document.createElement("BUTTON");
+								                        joinButton.setAttribute("onClick","groupLeavefunction(this)");
+								                        joinButton.setAttribute("id","button_leavegroup_"+request["group_id"]);
+								                        joinButton.setAttribute("class","btn btn-success");
+								                        joinButton.innerHTML="Leave";
+								    					buttonGroup.appendChild(joinButton);
+								                    
+								    			buttonToolbar.appendChild(buttonGroup);
+								    			buttonCol.appendChild(buttonToolbar);
+								    			requestMedia.appendChild(requestCol);
+								    			requestMedia.appendChild(buttonCol);
+											document.getElementById("jgroupRows").appendChild(requestMedia);	
+											
+										}
+										
+									}
+
+									
+								}
+
+
+							}
+						});
+
+			});
+
+	  function groupLeavefunction(x)
+	  {
+	  var id=(x.id).split('_');
+
+	  //console.log("buttonId"+id[2]);
+
+	  	$.ajax({
+	  			type: "put",
+	  			url: "http://localhost:8080/facebook_group6/webapi/groups/"+id[2]+"/members/"+sessionStorage.id+"/leaveGroup",
+
+	  			contentType: "application/json",
+	  			
+	  			success: function (response) {
+	  				console.log(response);
+	  				if(response!=null)
+	  					{
+	  					window.location.href = "http://localhost:8080/facebook_group6/groups.html";
+	  					}
+	  				}
+	  	});
+	}
+	  function groupJoinfunction(x)
+	  {
+	  var id=(x.id).split('_');
+
+	  //console.log("buttonId"+id[2]);
+
+	  	$.ajax({
+	  			type: "put",
+	  			url: "http://localhost:8080/facebook_group6/webapi/groups/"+id[2]+"/members/"+sessionStorage.id+"/joinGroup",
+
+	  			contentType: "application/json",
+	  			
+	  			success: function (response) {
+	  				console.log(response);
+	  				if(response!=null)
+	  					{
+	  					window.location.href = "http://localhost:8080/facebook_group6/groups.html";
+	  					}
+	  				}
+	  	});
+	}
+	  function declineInvitefunction(x)
+	  {
+	  var id=(x.id).split('_');
+
+	  //console.log("buttonId"+id[2]);
+
+	  	$.ajax({
+	  			type: "put",
+	  			url: "http://localhost:8080/facebook_group6/webapi/groups/"+id[2]+"/members/"+sessionStorage.id+"/declineGroup",
+
+	  			contentType: "application/json",
+	  			
+	  			success: function (response) {
+	  				console.log(response);
+	  				if(response!=null)
+	  					{
+	  					window.location.href = "http://localhost:8080/facebook_group6/groups.html";
+	  					}
+	  				}
+	  	});
+	}
+
+	  function linktogroupfunction(x)
+	  { 
+	  var groupid= (x.id).split('_');
+	  //alert(x.id);
+	  //console.log(response);
+	  	$.ajax({
+	  		 
+	  			type: "get",
+	  			url: "http://localhost:8080/facebook_group6/webapi/groups/"+groupid[0],
+	  			contentType: "application/json",
+	  			success: function (response) {
+	  				
+	  				console.log(response);
+	  				if(response!=null)
+		    		{
+		    			sessionStorage.groupid=response.group_id;
+		    			sessionStorage.groupname=response.group_name;
+		    			sessionStorage.userid=response.created_by;
+		    		window.location.href = "http://localhost:8080/facebook_group6/group_page.html";
+		    		}				
+	  	}
+	  	});
+	  }
+	  
+/*	
+	  function groupownerfunction(x)
+	  { 
+	  var ownerid=  (x.id).split('_');
+	  //console.log(response);
+	 // alert("id's: "+x.id[0],x.id[1],ownerid[1]);
+	  	$.ajax({
+	  		 
+  			type: "get",
+  			url: "http://localhost:8080/facebook_group6/users/"+ownerid[1],
+  			contentType: "application/json",
+  			success: function (response) {
+  				
+  				console.log(response);
+  				if(response!=null)
+	    		{
+	    			sessionStorage.userid=response.user_id;
+	    			sessionStorage.ownername=response.first_name+response.last_name;
+	    			//alert(sessionStorage.ownername);
+	    		window.location.href = "http://localhost:8080/facebook_group6/group_page.html";
+	    		}
+  				
+  	}
+  	});
+	  }*/
+	 
+	
+	 
+	var form1 = $('#createGroup');
+		form1.submit(function () {
+		$.ajax({
+		type: form1.attr('method'),
+		url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/groups",
+		data: form1.serialize(),
+		success: function (response) {
+				
+	    		console.log(response);
+	    		if(response!=null)
+	    		{
+	    			sessionStorage.groupid=response.group_id;
+	    			sessionStorage.groupname=response.group_name;
+	    			
+	    			window.location.href = "http://localhost:8080/facebook_group6/group_page.html";
+	    		}
+	    		else
+	    			alert(" try again!!!");
+	    		}
+	    	});
+	    	return false;
+	    	});
+		
+		  $(document).ready(function(){
+			    
+			 
+			  
+			    if(sessionStorage.id=="null")
+			      	window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+			    
+			    else
+			    {   
+			    	
+			    	document.getElementById("profile").innerHTML="<h5>"+sessionStorage.fName+"</h5>";
+			    	document.getElementById("homeProfileImg1").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+			        console.log(sessionStorage.dob);
+			        console.log(sessionStorage.homeTown);
+			    }
+			     
+			});
+		  
+		  
+		  function search() {
+				console.log(document.getElementById("navBarSearch"));
+				if (event.keyCode == 13
+						&& document.getElementById("navBarSearch").value != '') {
+					$
+							.ajax({
+								type : "get",
+								//url: "http://172.16.84.232:8080/fb/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=home&userId="+sessionStorage.id,
+								url : "http://localhost:8080/facebook_group6/webapi/users/search?searchData="
+										+ document.getElementById("navBarSearch").value
+										+ "&from=home" + "&userId=" + sessionStorage.id,
+								success : function(response) {
+									console.log(response + "profile");
+									window.location.href = "http://localhost:8080/facebook_group6/search.html";
+								}
+							});
+				}
+			}
+		  
+</script>
+</html>
+

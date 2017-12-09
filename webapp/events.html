@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="Xent-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-theme.min.css">
+		<script src="dist/js/jquery-3.1.1.js"></script>
+		<script src="dist/js/bootstrap.js"></script>
+		<script src="dist/fonts/"></script>
+	    <link rel="stylesheet" type="text/css" href="fbhome.css">
+	    
+	    <style>
+     	@media only screen and (max-width : 540px) {
+        }
+    	.popup-box{
+                z-index:100000000;
+                position: fixed;
+                bottom: 0px;
+                right: 220px;
+                height: 285px;
+                background-color: rgb(237, 239, 244);
+                width: 300px;
+                border: 1px solid rgba(29, 49, 91, .3);
+         }
+            
+         .popup-box .popup-head{
+                background-color: #6d84b4;
+                padding: 5px;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                clear: both;
+         }
+            
+         .popup-box .popup-head .popup-head-left{
+                float: left;
+         }
+            
+         .popup-box .popup-head .popup-head-right{
+                float: right;
+                opacity: 0.5;
+         }
+            
+         .popup-box .popup-head .popup-head-right a{
+                text-decoration: none;
+                color: inherit;
+         }
+            
+         .popup-box .popup-messages{
+                height: 225px;
+                overflow-y: scroll;
+         }
+            
+    	.test1 {
+			width: 70%;
+			word-wrap: break-word;
+			padding: 0.5em;
+			margin-left:0.5em;
+		 }
+			
+		 .test2 {
+			width: 70%;
+			word-wrap: break-word;
+			padding: 0.5em;
+		 }			   
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-fixed-top" style="z-index:100000">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img src="fblogo.jpg" width="20px"></span>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <input id="navBarSearch" type="text" value="" name="navBarSearch"
+			placeholder="Search People" size="50px" onkeydown="search()" style="margin-top: 12px">
+      <div class="nav navbar-nav navbar-right">	
+  	<div class="btn-toolbar pull-right" role="toolbar" style="margin-top:5px">
+	    <div class="btn-group" role="group">
+	      <img id="navPic" src="pic.jpg" width="25px"> 
+	      <button id="profile" class="navbar-btn" type="button">Priyank</button>
+	      <button id="home" class="navbar-btn" type="button">Home</button>
+	      <button class="navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-user"></span>
+	      </button>
+	      <button class="fb-notifications navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-comment"></span>
+	      </button>
+	      <button class="fb-notifications navbar-btn" type="button">
+	          <span class="glyphicon glyphicon-globe"></span>
+	      </button>
+	    </div>
+	    <div class="btn-group" role="group">
+	      <div class="dropdown btn-group" role="group">
+	        <button id="dropbtn1" type="button" class="btn btn-default dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true">
+	        	<span class="glyphicon glyphicon-triangle-bottom"></span>
+	        </button>
+	        <ul class="dropdown-menu" aria-labelledby="dropbtn1">
+	     
+	          <li><a id="logout" href="#">Log out</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+  </div>
+  </div>
+    </div>
+  </div><!-- /.container -->
+</nav>
+
+<div class="row" style="margin-top:70px">
+  <div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked" style="float:right">
+      <div class="row">
+        <div class="col-xs-3"><img id="profilePic" src="pic.jpg" style="width:30px"></div>
+        <div class="col-xs-9"><a id="profileFullName" href="#">Priyank Sharma</a><a href="#" style="font-size:12px"><br>Edit Profile</a></div>
+      </div>
+      <li style="margin-top:20px;margin-bottom:10px"><span>MY EVENTS</span></li>
+      <li><h5 id="upcoming" style="padding:0px;margin-left:15px"><span class="glyphicon glyphicon-share"></span> Upcoming</h5></li>
+      <li><h5 id="discover" style="padding:0px;margin-left:15px"><span class="glyphicon glyphicon-eye-open"></span> Discover Events</h5></li>
+      <li><h5 id="past" style="padding:0px;margin-left:15px"><span class="glyphicon glyphicon-hourglass"></span> Past Events</h5></li>
+      <li><a href="#" data-toggle="modal" data-target="#createEventModal" style="padding:0px;margin-left:15px">
+      		<span class="glyphicon glyphicon-plus-sign"></span> Create</a></li>
+    </ul>  
+  </div>
+
+  <div class="col-xs-5">
+    <!-- first panel -->
+      <div class="event panel panel-default" id="panel1"> 
+          <div class="panel-body">
+            <h4 id="pendingevents" style="margin-top:0px"><b>Invitations</b></h4>
+          	<div id="invitedEvents" class="row"></div>  
+          </div>
+      </div>
+
+      <!-- second panel -->
+      <div class="event panel panel-default" id="panel2">
+          <div class="panel-body">
+            <h4 id="hostedevents" style="margin-top:0px"><b>Hosted Events</b></h4>
+            <div id="goingEvents" class="row"></div>
+      	  </div>
+      </div>
+
+      <!-- third panel -->
+      <div class="event panel panel-default" id="panel3">
+          <div class="panel-body">
+            <h4 style="margin-top:0px"><b>Upcoming Events</b></h4>
+            <div id="interestedEvents" class="row">
+    	  </div>
+  	  </div>      
+  	</div>
+  	
+  	<!-- discover panel -->
+  	 <div class="event panel panel-default" id="panel4"> 
+        <div class="panel-body">
+           <h4 id="discovereventscol" style="margin-top:0px"><b>Discovered Events</b></h4>
+           <div id="discovereventsrow" class="row"></div>  
+        </div>
+     </div>
+     
+     <!-- past panel -->
+  	 <div class="event panel panel-default" id="panel5"> 
+        <div class="panel-body">
+           <h4 style="margin-top:0px"><b>Past Events</b></h4>
+           <div id="pastEvents" class="row"></div>  
+        </div>
+     </div>
+  </div>
+  
+  <div class="col-xs-3"></div>
+  
+  <div class="col-xs-2 panel" style="padding-right:0px" >
+  	   <!-- Chat room -->
+	   <div class="panel-header"><input type="text" style="width:100%" placeholder="filter"></div>
+       <div class="panel-body" style="padding-right:0px;">
+            <div class="h-scroll" id="chat" style="background-color:white;padding-left:10px;"></div>        
+       </div>
+  </div>
+</div>
+
+	 <!--create event modal-->
+	<div id="createEventModal" class="modal fade" role="dialog" style="z-index:1000000">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Create a New Event</h4>
+				</div>
+				<div class="modal-body">
+				Basic information about your event	
+					<form class="form" id="createEvent" method="post">
+						<div class="form-group" style="padding:40px">	
+							<div>	
+								<b style="margin-right:50px">Event Name</b>
+								<input id="eventName" name="event_name" type="text" placeholder="  Enter Event Name" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Location</b>
+								<input id="eventLoc" name="location" type="text" placeholder="  Enter event venue" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Start Date</b>
+								<input type="date" name="start_date" id="eventStart" name="dob" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">End Date</b>
+								<input type="date" name="end_date" id="eventEnd" name="dob" style="width:300px;float:right">
+							</div><br>
+							<div>	
+								<b style="margin-right:50px">Description</b>
+								<input type="textArea" name="description" id="eventDesc" placeholder=" Add a description" name="dob" style="width:300px;float:right"
+									style="resize:none">
+							</div><br>
+							<input type="submit" value="Submit" class="btn btn-warning" />		
+						</div>
+					</form>
+				</div>
+            	<div class="modal-footer"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- upload photo modal -->
+	<div id="uploadPhotoModal" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Upload Photo</h4>
+						</div>
+						<div class="modal-body">
+							<form id="uploadPic"
+								action="http://localhost:8080/facebook_group6/webapi/users/uploadImage"
+								method="post" enctype="multipart/form-data">
+								<p id="uploadPhoto">
+									Select a file : <input type="file" name="file" size="45"
+										class="btn btn-success" />
+								</p>
+								<input type="text" name="userId" id="PhotoId"
+									value="anupam.awasthi1@gmail.com" style="display: none;">
+								<input type="submit" value="Upload It" class="btn btn-warning" />
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+
+<script type="text/javascript"> 
+	
+	$("#home").click(function() {
+				window.location.href = "http://localhost:8080/facebook_group6/fbHome.html";
+	});
+	
+	$("#profile").click(function(){
+		window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+	});
+	
+	$("#profileFullName").click(function(){
+		window.location.href="http://localhost:8080/facebook_group6/Profile.html";
+	});
+	
+	$("#logout").click(function() {
+				sessionStorage.id = null;
+				sessionStorage.fName = null;
+				sessionStorage.lName = null;
+				sessionStorage.homeTown = null;
+				sessionStorage.contact = null;
+				sessionStorage.dob = null;
+				sessionStorage.book=null;
+				window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";
+	});
+	
+	$("#upcoming").click(function() {
+		window.location.href="http://localhost:8080/facebook_group6/events.html";
+	});
+	
+	$("#past").click(function() {
+		$("#panel1").hide();
+		$("#panel2").hide();
+		$("#panel3").hide();
+		$("#panel4").hide();
+		$("#panel5").show();
+		$.ajax({
+			type : "GET",
+			url : "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/pastevents",
+			success : function(response){
+				console.log(response);
+				if (response != null){
+					var i;
+					for (i = 0; i < response.length ; i++){
+						console.log(response.length);
+						var request=response[i];
+						var requestMedia=document.createElement("div");
+						requestMedia.setAttribute("class", "media");
+						requestMedia.setAttribute("id","requestMedia_"+request["event_id"]);
+						var divImg=document.createElement("div");
+						divImg.setAttribute("class","media-left");
+						divImg.setAttribute("style", "padding : 10px")
+						divImg.setAttribute("id","divImageId_"+request["event_id"]);
+						var image=document.createElement("IMG");
+						image.setAttribute("class","media-object");
+						image.setAttribute("src","falafel.jpg");
+						image.style.width = "160px";
+						image.style.height = "110px";
+						divImg.appendChild(image);  
+						var divName=document.createElement("div");
+						divName.setAttribute("class", "media-body");
+						var link=document.createElement("a");
+						link.setAttribute("class","media-heading");
+						link.setAttribute("id",request["event_id"]+"_"+request["status"]+"_past");
+						link.setAttribute("onClick","callEventPage(this)");
+						link.innerHTML="<h4><b>"+request["event_name"]+"</b></h4>";
+						var details=document.createElement("p");
+						details.setAttribute("style", "font-size:12px");
+						details.innerHTML="<span style=\"color:red\">"+request["start_date"].substring(0,10)+"  -  "+request["end_date"].substring(0,10)+"</span><br>"+request["location"]+"<br>"+
+						"<span style=\"color:grey\">"+"Hosted by "+request["hosted_by"]+"</span>";
+						divName.appendChild(link);
+						divName.appendChild(details);
+						var eventOver=document.createElement("p");
+						eventOver.setAttribute("style", "font-size:18px;color:red");
+						eventOver.innerHTML="Event Closed";
+						divName.appendChild(eventOver);
+						requestMedia.appendChild(divImg);
+						requestMedia.appendChild(divName);
+						document.getElementById("pastEvents").appendChild(requestMedia);	
+					}
+				}
+			}
+		});
+	});
+	
+	$("#discover").click(function() {
+		$("#panel1").hide();
+		$("#panel2").hide();
+		$("#panel3").hide();
+		$("#panel4").show();
+		$("#panel5").hide();
+		$.ajax({
+			type : "GET",
+			url : "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/discover_events",
+			success : function(response) {
+				console.log(response);	
+				if (response != null) {						
+					var i;
+					for (i = 0; i < response.length ; i++) {   
+						var request=response[i];
+						var requestMedia=document.createElement("div");
+						requestMedia.setAttribute("class", "media");
+						requestMedia.setAttribute("id","discoverMedia_"+request["event_id"]);
+						
+						var divImg=document.createElement("div");
+						divImg.setAttribute("class","media-left");
+						divImg.setAttribute("style", "padding : 10px")
+						divImg.setAttribute("id","divImageId_"+request["event_id"]);
+						
+						var image=document.createElement("IMG");
+						image.setAttribute("class","media-object");
+						image.setAttribute("src","falafel.jpg");
+						image.style.width = "160px";
+						image.style.height = "110px";
+						divImg.appendChild(image);			 
+						
+						var divName=document.createElement("div");
+						divName.setAttribute("class", "media-body");
+												
+						var link=document.createElement("a");
+						link.setAttribute("class","media-heading");
+						link.setAttribute("id",(request["event_id"]+"_"+"not going"));
+						link.setAttribute("onClick","callEventPage(this)");
+						link.innerHTML="<h4><b>"+request["event_name"]+"</b></h4>";
+						
+						var  buttonToolbar=document.createElement("div");
+						buttonToolbar.setAttribute("class", "btn-toolbar");
+						buttonToolbar.setAttribute("role", "toolbar");
+						buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["event_id"]);
+						var  buttonGroup = document.createElement("div");
+						buttonGroup.setAttribute("class", "btn-group");
+						buttonToolbar.setAttribute("style", "margin-top:-10px");
+						buttonGroup.setAttribute("role", "group");
+						var interested=document.createElement("BUTTON");
+						interested.setAttribute("onClick","changeDiscoveryStatus(this)");
+						interested.setAttribute("style", "margin-right:10px");
+						interested.setAttribute("id","button_May Be_"+request["event_id"]);
+						interested.setAttribute("class","btn btn-secondary btn-sm");
+						interested.innerHTML="May Be";
+						buttonGroup.appendChild(interested);
+						
+						var going=document.createElement("BUTTON");
+						going.setAttribute("style", "margin-right:10px");
+						going.setAttribute("onClick","changeDiscoveryStatus(this)");
+						going.setAttribute("id","button_going_"+request["event_id"]);
+						going.setAttribute("class","btn btn-secondary btn-sm");
+						going.innerHTML="Going";
+						buttonGroup.appendChild(going);		
+						buttonToolbar.appendChild(buttonGroup);
+						
+						var details=document.createElement("p");
+						details.setAttribute("style", "font-size:12px");
+						details.innerHTML="<span style=\"color:blue\">"+request["start_date"].substring(0,10)+"  -  "+request["end_date"].substring(0,10)+"</span><br>"+request["location"]+"<br>"+
+						"<span style=\"color:grey\">"+"Hosted by "+request["hosted_by"]+"</span>";
+						divName.appendChild(link);
+						divName.appendChild(details);
+						divName.appendChild(buttonToolbar);
+						requestMedia.appendChild(divImg);
+					    requestMedia.appendChild(divName);
+					    document.getElementById("discovereventscol").appendChild(requestMedia);
+					}
+				}
+			}
+		});
+	});
+	
+	$(document).ready(function(){  
+		if(sessionStorage.id=="null")
+			window.location.href = "http://localhost:8080/facebook_group6/fblogin.html";		    
+		else{
+			document.getElementById("navBarSearch").value='';
+			document.getElementById("navPic").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+			document.getElementById("profilePic").src="users/"+sessionStorage.id+"/"+sessionStorage.profilePicUrl;
+			document.getElementById("profileFullName").innerHTML=sessionStorage.fName+" "+sessionStorage.lName;
+			document.getElementById("profile").innerHTML=sessionStorage.fName;
+			popoverFunc();
+			$("#panel4").hide();
+			$("#panel5").hide();
+			$.ajax({
+				type : "GET",
+				url : "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/events",
+				success : function(response) {						
+					console.log(response);				
+					if (response != null) {						
+						var i;
+						for (i = 0; i < response.length ; i++) {   
+							var request=response[i];
+							var requestMedia=document.createElement("div");
+							requestMedia.setAttribute("class", "media");
+							requestMedia.setAttribute("id","requestMedia_"+request["event_id"]);
+							var divImg=document.createElement("div");
+							divImg.setAttribute("class","media-left");
+							divImg.setAttribute("style", "padding : 10px")
+							divImg.setAttribute("id","divImageId_"+request["event_id"]);
+							
+							var image=document.createElement("IMG");
+							image.setAttribute("class","media-object");
+							image.setAttribute("src","falafel.jpg");
+							image.style.width = "160px";
+							image.style.height = "110px";
+							divImg.appendChild(image);			 
+							
+							var divName=document.createElement("div");
+							divName.setAttribute("class", "media-body");
+													
+							var link=document.createElement("a");
+							link.setAttribute("class","media-heading");
+							link.setAttribute("id",(request["event_id"]+"_"+request["status"]));
+							link.setAttribute("onClick","callEventPage(this)");
+							link.innerHTML="<h4><b>"+request["event_name"]+"</b></h4>";
+							
+							var details=document.createElement("p");
+							details.setAttribute("style", "font-size:12px");
+							details.innerHTML="<span style=\"color:blue\">"+request["start_date"].substring(0,10)+"  -  "+request["end_date"].substring(0,10)+"</span><br>"+request["location"]+"<br>"+
+							"<span style=\"color:grey\">"+"Hosted by "+request["hosted_by"]+"</span>";
+							divName.appendChild(link);
+							divName.appendChild(details);
+							requestMedia.appendChild(divImg);
+						    requestMedia.appendChild(divName);
+							
+						    if(request["status"]=="invite"){
+								var  buttonToolbar=document.createElement("div");
+								buttonToolbar.setAttribute("class", "btn-toolbar");
+								buttonToolbar.setAttribute("role", "toolbar");
+								buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["event_id"]);
+								var  buttonGroup = document.createElement("div");
+								buttonGroup.setAttribute("class", "btn-group");
+								buttonToolbar.setAttribute("style", "margin-top:-10px");
+								buttonGroup.setAttribute("role", "group");
+								var interested=document.createElement("BUTTON");
+								interested.setAttribute("onClick","changeStatus(this)");
+								interested.setAttribute("style", "margin-right:10px");
+								interested.setAttribute("id","button_accepted_"+request["event_id"]);
+								interested.setAttribute("class","btn btn-secondary btn-sm");
+								interested.innerHTML="May Be";
+								buttonGroup.appendChild(interested);
+								
+								var going=document.createElement("BUTTON");
+								going.setAttribute("style", "margin-right:10px");
+								going.setAttribute("onClick","changeStatus(this)");
+								going.setAttribute("id","button_accepted_"+request["event_id"]);
+								going.setAttribute("class","btn btn-secondary btn-sm");
+								going.innerHTML="Going";
+								buttonGroup.appendChild(going);		
+								
+								var ignore=document.createElement("BUTTON");
+								ignore.setAttribute("onClick","changeStatus(this)");
+								ignore.setAttribute("id","button_ignore_"+request["event_id"]);
+								ignore.setAttribute("class","btn btn-secondary btn-sm");
+								ignore.innerHTML="Not Going";
+								buttonGroup.appendChild(ignore);
+								
+								buttonToolbar.appendChild(buttonGroup);
+								divName.appendChild(buttonToolbar);
+								requestMedia.appendChild(divName);
+								document.getElementById("invitedEvents").appendChild(requestMedia);					
+						}
+						else if(request["status"] == "host"){
+							requestMedia.appendChild(divName);			               
+							document.getElementById("goingEvents").appendChild(requestMedia);						
+						}
+						else{
+							var  buttonToolbar=document.createElement("div");
+							buttonToolbar.setAttribute("class", "btn-toolbar");
+							buttonToolbar.setAttribute("role", "toolbar");
+							buttonToolbar.setAttribute("id", "buttonToolbarId_"+request["event_id"]);
+							
+							var  buttonGroup = document.createElement("div");
+							buttonGroup.setAttribute("class", "btn-group");
+							buttonToolbar.setAttribute("style", "margin-top:-10px");
+							buttonGroup.setAttribute("role", "group");
+							
+							var interested=document.createElement("BUTTON");
+							interested.setAttribute("onClick","changeStatus(this)");
+							interested.setAttribute("style", "margin-right:10px");
+							interested.setAttribute("id","button_May Be_"+request["event_id"]);
+							if(request["status"] == "May Be")
+								interested.setAttribute("class","btn btn-primary disabled btn-sm");
+							else
+								interested.setAttribute("class","btn btn-secondary btn-sm");
+							interested.innerHTML="May Be";
+							buttonGroup.appendChild(interested);	
+							
+							var goingButton=document.createElement("BUTTON");
+							goingButton.setAttribute("onClick","changeStatus(this)");
+							goingButton.setAttribute("style", "margin-right:10px");
+							goingButton.setAttribute("id","button_going_"+request["event_id"]);
+							if(request["status"]=="going")
+								goingButton.setAttribute("class","btn btn-primary disabled btn-sm");
+							else
+								goingButton.setAttribute("class", "btn btn-secondary btn-sm");
+							goingButton.innerHTML="Going";
+							buttonGroup.appendChild(goingButton);
+							
+							var ignoreButton=document.createElement("BUTTON");
+							ignoreButton.setAttribute("onClick","changeStatus(this)");
+							ignoreButton.setAttribute("id","button_ignore_"+request["event_id"]);
+							ignoreButton.setAttribute("class","btn btn-secondary btn-sm");
+							ignoreButton.innerHTML="Not Going ";
+							buttonGroup.appendChild(ignoreButton);
+							buttonToolbar.appendChild(buttonGroup);
+							divName.appendChild(buttonToolbar);
+							requestMedia.appendChild(divName);		
+							document.getElementById("interestedEvents").appendChild(requestMedia);											
+						}					
+					}						
+				}
+			}
+		});
+		}
+	});
+	
+	function callEventPage(x){
+		var eventid = (x.id).split('_');
+		$.ajax({
+			type: "get",
+		  	url: "http://localhost:8080/facebook_group6/webapi/events/"+eventid[0],
+		  	success: function (response) {		  		
+		  		console.log(response);
+		  		if(response!=null){
+		  			console.log("................."+response["hosted_by"]);
+			    	sessionStorage.event_id=response.event_id;
+			    	sessionStorage.event_name=response.event_name;
+			    	sessionStorage.hosted_by=response.hosted_by;
+			    	sessionStorage.location = response.location;
+			    	sessionStorage.start_date = response.start_date.substring(0, 10);
+			    	sessionStorage.end_date = response.end_date.substring(0, 10);
+			    	sessionStorage.description = response.description;
+			    	sessionStorage.summary = response.summary;
+			    	sessionStorage.status=eventid[1];
+			    	if(eventid[2]=="past")
+						window.location.href = "http://localhost:8080/facebook_group6/past_event_page.html";
+			    	else
+			    		window.location.href = "http://localhost:8080/facebook_group6/event_page.html";
+			    }		
+		  		else
+		  			alert("event page redirect failed!!");
+		  	}//end of success function 1
+		});  	
+	}//end of callEventPage(x)
+	
+	var form1 = $('#createEvent');
+		form1.submit(function(){
+			$.ajax({
+				type: form1.attr('method'),
+				url: "http://localhost:8080/facebook_group6/webapi/users/"+sessionStorage.id+"/events",
+				data: form1.serialize(),
+				success: function (response) {			
+			    	console.log(response);	
+			    	if(response!=null){
+			    		sessionStorage.event_id=response.event_id;
+			    		sessionStorage.event_name=response.event_name;
+			    		sessionStorage.hosted_by=response.hosted_by;
+			    		sessionStorage.start_date=response.start_date;
+			    		sessionStorage.end_date=response.end_date;
+			    		sessionStorage.location=response.location;
+			    		sessionStorage.description=response.description;
+			    		sessionStorage.status=response.status;
+			    		window.location.href = "http://localhost:8080/facebook_group6/event_page.html";
+			    	}
+			    	else{
+			    		document.getElementById("eventEnd").value='';
+			    		alert("End date should be after start date!!!");
+			    	}
+			    }
+			});
+			return false;
+		});	
+	
+		function changeStatus(x){
+			var id=(x.id).split('_');		//id[1]=status passed, id[2] = event_id
+			$.ajax({
+				type: "put",
+				url: "http://localhost:8080/facebook_group6/webapi/events/"+id[2]+"/changeStatus/"+id[1]+"/"+sessionStorage.id,
+			  	contentType: "application/json",		
+			  	success: function (response) {
+			  		console.log(response);
+			  		if(response!=null)
+			  			window.location.href = "http://localhost:8080/facebook_group6/events.html";
+			  	}
+			});
+		}
+		
+		function changeDiscoveryStatus(x){
+			var id=(x.id).split('_');		//id[1]=status passed, id[2] = event_id
+			$.ajax({
+				type: "post",
+				url: "http://localhost:8080/facebook_group6/webapi/events/"+id[2]+"/changeStatus/"+id[1]+"/"+sessionStorage.id,
+			  	contentType: "application/json",		
+			  	success: function (response) {
+			  		console.log(response);
+			  		if(response!=null)
+			  			window.location.href = "http://localhost:8080/facebook_group6/events.html";
+			  	}
+			});
+		}
+		
+		function popoverFunc() {
+	        $("#chat").empty();
+	       
+	        $
+	            .ajax({
+	                type: "get",
+	                url: "http://localhost:8080/facebook_group6/webapi/users/" + sessionStorage.id + "/friends",
+	                success: function(response) {
+	                    if (response != null) {
+	                        console.log(response);
+	                        for (var i = 0; i < response.length; i++) {
+	                            var request = response[i];
+	                            var div = document.createElement("div");
+	                            div.setAttribute("id", "div_"+request["user_id"]);
+
+	                            var name = request["first_name"] + " " + request["last_name"];
+	                            var dob = request["date_of_birth"];
+	                            var hometown = request["home_town"];
+
+	                            var title = "<div class=\"media\">" + "<div class=\"media-left\">" + "<img src=\"users/" + request["user_id"] + "/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">" + "</div>" + "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">" + name + "</a></h4>" + "<p>" + dob + "<br>" + hometown + "</p></div></div>";
+	                          
+
+	                            var anc = document.createElement("a");
+	                            anc.setAttribute("id", "anc_frnd_" + request["user_id"]);
+	                           
+
+	                            var img = document.createElement("img");
+	                            img.setAttribute("src", "users/" + request["user_id"] + "/"+request["profilePicUrl"]);
+	                            img.setAttribute("id","frnd_pop_"+request["user_id"]+"_"+request["first_name"]);
+	                            img.style.width = "25px";
+	                            img.setAttribute("onClick","register_popup(this)");
+	                           
+
+	                            anc.appendChild(img);
+	                            var id=request["first_name"];
+	                            var name = document.createElement("a");
+	                            name.setAttribute("id","frnd_pop_"+request["user_id"]);
+	                            name.innerHTML=request["first_name"]+" "+request["last_name"]; 
+	                            //name.setAttribute("href","javascript:register_popup(request.first_name,request.first_name);");
+	                             name.setAttribute("class","hover");
+	                             name.setAttribute("data-toggle", "popover");
+	                             name.setAttribute("data-trigger", "hover");
+	                             name.setAttribute("onmouseenter","postNamepop(this)");
+	                           
+	                           
+	                            anc.appendChild(name);
+	                            div.appendChild(anc);
+	                            document.getElementById("chat")
+	                                .appendChild(div);
+
+	                            var hr = document.createElement("hr");
+	                            document.getElementById("chat").appendChild(hr);
+	                          
+	                        }
+	                    }
+	                }
+	            });
+	    }
+	    
+	Array.remove = function(array, from, to) {
+	   var rest = array.slice((to || from) + 1 || array.length);
+	   array.length = from < 0 ? array.length + from : from;
+	   return array.push.apply(array, rest);
+	}
+
+	//this variable represents the total number of popups can be displayed according to the viewport width
+	var total_popups = 0;
+
+	//arrays of popups ids
+	var popups = [];
+
+	//this is used to close a popup
+	function close_popup(id)
+	{
+	console.log("in close "+ id);
+	   for(var iii = 0; iii < popups.length; iii++)
+	   {
+	       if(id == popups[iii])
+	       {
+	        console.log(popups[iii],id);
+	        
+	           Array.remove(popups, iii);
+	           console.log(popups[iii],id);
+	           
+	           document.getElementById(id).style.display = "none";
+	           document.getElementById(id).remove();
+	           console.log(document.getElementById(id));
+	           calculate_popups();
+	           console.log("close end");
+	           for(var i=0; i<popups.length;i++)
+	            {
+	            console.log(popups[i]);
+	            }
+	           console.log("close popup");
+	           return;
+	       }
+	   }   
+	}
+
+	//displays the popups. Displays based on the maximum number of popups that can be displayed on the current viewport width
+	function display_popups()
+	{
+	console.log("in display popup");
+	   var right = 220;
+	   
+	   var iii = 0;
+	   for(iii; iii < total_popups; iii++)
+	   {
+	    
+	       if(popups[iii] != undefined)
+	       {
+	        console.log("in popup fn if statament"+ popups[iii]);
+	           var element = document.getElementById(popups[iii]);
+	           element.style.right = right + "px";
+	           right = right + 320;
+	           element.style.display = "block";
+	          // console.log(element);
+	       }
+	   }
+	   
+	   for(var jjj = iii; jjj < popups.length; jjj++)
+	   {
+	       var element = document.getElementById(popups[jjj]);
+	       element.style.display = "none";
+	   }
+	   console.log("end of display popup");
+	}
+
+
+	//creates markup for a new popup. Adds the id to popups array.
+	function register_popup(x)
+
+	{
+	console.log("in rgister function");
+	var popid= x.id;
+	console.log(popid);
+	var temp =x.id.split('_')[2];
+	var id=temp;
+	var name = x.id.split('_')[3];
+	console.log(name);
+	console.log("id in register "+id);
+	   
+	   console.log(popups.length);
+	   //System.out.println("in register function")
+	   for(var iii = 0; iii < popups.length; iii++)
+	   {   
+	       //already registered. Bring it to front.
+	       if(id == popups[iii])
+	       {
+	        console.log("in if");
+	           Array.remove(popups, iii);
+	        console.log(popups.length);
+	           popups.unshift(id);
+	           
+	           calculate_popups();
+	           
+	           
+	           return;
+	       }
+	   }               
+	   
+	   var element = '<div class="popup-box chat-popup" id="'+ id +'">';
+	   element = element + '<div class="popup-head">';
+	   element = element + '<div class="popup-head-left">'+ name +'</div>';
+	   element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
+	   element = element + '<div style="clear: both"></div></div><div  id="popup_messages_'+id+'" class="popup-messages"></div>';
+	   element = element +'<div><input id="chatText_'+id+'"  type="text" onkeyDown="setMessage(this)" style="width:100%;margin-bottom:50px"/></div></div>';
+	   //console.log("in register"+element);
+	   //var pop =document.getElementById("pop_upbox");
+	   //pop.append(element);
+	   //console.log(pop);
+	   console.log(element);
+	 // document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
+	 $("body").append(element);
+	//console.log(document.getElementsByTagName("body")[0].innerHTML);
+	   popups.unshift(id);
+	   console.log("popups"+popups.length);
+	           
+	   calculate_popups();
+	   console.log("end of from regster");
+	   
+	  // document.getElementById("popup_messages_"+id).appendChild(document.createTextNode("hello"));
+	  
+	  
+	   $.ajax({
+	type : "get",
+	url : "http://localhost:8080/facebook_group6/webapi/userMessages/getTextMessages/"+sessionStorage.id+"/"+id,
+	success : function(data) {
+
+	if(data)
+	{
+	var len=data.length;
+	for(var i=0;i<len;i++)
+	{
+	var message=data[i];
+	if(message.sender_id==sessionStorage.id)
+	createDiv(message.message,"alert alert-success  test1 pull-left","popup_messages_"+id,id);
+	else
+	createDiv(message.message,"alert alert-success test1 pull-right","popup_messages_"+id,id);
+	}
+	}
+	//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+	}
+	});
+	  
+	  
+	  
+	}
+	function setMessage(x)
+	{
+	var id1 = (x.id).split("_");
+	if (x.value != "" && event.keyCode == 13)
+	{
+	var obj={"sender_id":sessionStorage.id,"receiver_id":id1[1],"message":document.getElementById(x.id).value}
+	$.ajax({
+	type : 'PUT',
+	data : JSON.stringify(obj),
+	contentType:"application/json",
+	url : "http://localhost:8080/facebook_group6/webapi/userMessages/sendTextMessages",
+	success : function(data) {
+
+	if(data)
+	{
+	createDiv(data.message,"alert alert-success test1 pull-left","popup_messages_"+id1[1],id1[1]);
+	document.getElementById(x.id).value='';
+	}
+	//createDiv($('#chatText_'+id).val(),"alert alert-success test1 pull-left","popup_messages_"+id,id);
+
+	}
+	});
+	}
+	}
+
+	function createDiv(message,cl,id1,id2){
+	var Div_1 = document.createElement('div');
+	Div_1.className = cl;
+	var para=document.createElement('p');
+	var node = document.createTextNode(message);
+	para.appendChild(node);
+	Div_1.appendChild(para);
+	var element = document.getElementById(id1);
+	element.appendChild(Div_1);
+	var objDiv = document.getElementById(id1);
+	objDiv.scrollTop = objDiv.scrollHeight;
+	}
+
+
+
+
+	//calculate the total number of popups suitable and then populate the toatal_popups variable.
+	function calculate_popups()
+	{
+	   var width = window.innerWidth;
+	   if(width < 540)
+	   {
+	       total_popups = 0;
+	   }
+	   else
+	   {
+	       width = width - 200;
+	       //320 is width of a single popup box
+	       total_popups = parseInt(width/320);
+	   }
+	   console.log("hello"+total_popups);
+	   display_popups();
+	   
+	}
+
+	//recalculate when window is loaded and also when window is resized.
+	window.addEventListener("resize", calculate_popups);
+	window.addEventListener("load", calculate_popups);
+
+	/*--------------------------------------pop over function-------------------------------------------------  */
+	function fun() {
+
+	var element = $(this);
+	var id = element.attr("id");
+	//alert(id);
+	$(".hover").popover({
+	content : fetchdata1,
+	html : true,
+	placement:"top"
+	});
+	}
+
+	function fetchdata1() {
+
+	var friendList = "<p>";
+	var element = $(this);
+	var pid = element.attr("id");
+	var ido = pid.split('_');
+	console.log(ido);
+	$.ajax({
+	url : "http://localhost:8080/facebook_group6/webapi/users/"
+	+ ido[2],
+	method : "GET",
+	async : false,
+	//contentType: 'application/json',
+
+	success : function(request) {
+	console.log(request);
+	var name = request["first_name"] + " "
+	+ request["last_name"];
+	var dob = request["date_of_birth"];
+	var hometown = request["home_town"];
+
+
+	friendList = friendList + "<div class=\"media\">"
+	+ "<div class=\"media-left\">"
+	+ "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"
+	+ "</div>"
+	+ "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"
+	+ name + "</a></h4>" + "<p>" + dob
+	+ "<br>" + hometown
+	+ "</p></div></div>";
+	}
+	//return fetch_data;
+	});
+	console.log(friendList);
+	return friendList;
+	}
+
+
+	/*--------------------------------------pop over function-------------------------------------------------  */
+	/*--------------------------------------chat box-------------------------------------------------  */
+	function postNamepop(x){
+	 
+	var element=$(x);
+	var id=element.attr("id");
+	$(".hover").popover({
+	content:fetchNameim,
+	html:true,
+	placement:'left'
+	});
+	}
+	 
+	 
+	function fetchNameim(){
+	console.log("hello");
+	var friendList="<p>";
+	var element=$(this);
+	var pid=element.attr("id");
+	var ido = pid.split('_');
+	//console.log(ido[2]);;
+	$.ajax({
+	url:"http://localhost:8080/facebook_group6/webapi/users/"+ido[2],
+	method:"GET",
+	async:false,
+	//contentType: 'application/json',
+	       
+	       success: function(request){
+	        var name = request["first_name"]+" "+request["last_name"];
+	                 var dob = request["date_of_birth"];
+	                 var hometown = request["home_town"];
+	        friendList=friendList+"<div class=\"media\">"+"<div class=\"media-left\">"+
+	                     "<img src=\"users/"+request["user_id"]+"/"+request["profilePicUrl"]+"\" class=\"media-object\" style=\"width:100px;height:100px\">"+
+	                   "</div>"+
+	                   "<div class=\"media-body\" style=\"padding-top:10px\"><h4 class=\"media-heading\"><a href=\"#\">"+name+"</a></h4>"+
+	                     "<p>"+dob+"<br>"+hometown+"</p></div></div>";
+	      //friendList = friendList+"First Name :"+data.first_name+"<br>"+"Last Name :"+data.last_name+"<br>"+"City :"+data.home_town+"<br>"+"Date Of birth:"+data.date_of_birth;
+	 
+	       }
+	 
+	});
+	return friendList;
+	}
+
+		
+		function search(){	
+			console.log(document.getElementById("navBarSearch"));
+			if(event.keyCode==13 && document.getElementById("navBarSearch").value!=''){
+			$.ajax({
+				type: "get",
+				url: "http://localhost:8080/facebook_group6/webapi/users/search?searchData="+document.getElementById("navBarSearch").value+"&from=home"+"&userId="+sessionStorage.id,
+					success: function (response) {
+					console.log(response+"profile");
+					window.location.href = "http://localhost:8080/facebook_group6/search.html";		
+				}
+				});
+			}
+		}
+</script>
+</html>

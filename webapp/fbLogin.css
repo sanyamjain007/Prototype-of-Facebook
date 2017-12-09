@@ -1,0 +1,94 @@
+body{
+	background: linear-gradient(top, #FFFFFF, 0%, #d3D8E8, 100%);
+
+}
+
+.popover
+{
+	max-width:100%;
+}
+.navbar{
+	background-color:#4c66a4;
+}
+.navbar-form label{
+	color:#ffffff;
+	font-size:13px;
+	font-weight:normal;
+}
+.navbar-form  .input-sm{
+	border-radius:0;
+}
+
+legend a{
+	margin-top: 100px;
+	margin margin-left: 100px;
+	color:#141823;
+	font-size:30px;
+	font-family: tahoma;
+}
+
+.login-btn {
+  -webkit-border-radius: 0;
+  border-radius: 0px;
+  cursor:pointer;  
+  text-shadow: 1px 1px 4px #8a8a8a;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 13px;
+  background: #5b74a8;
+  line-height:21px; 
+  font-weight:bold; 
+  padding: 3px 6px 3px 6px;
+  border: solid #29447e  1px;
+}
+
+.signup-btn {
+	margin-top: 20px;
+    background: #79bc64;
+  	background-image: linear-gradient(to bottom, #79bc64, #578843);
+  	border-radius: 4px;
+  	font-family: Arial;
+  	color: #ffffff;
+  	font-size: 20px;
+  	padding: 10px 20px 10px 20px;
+  	border: solid #3b6e22  1px;
+}
+
+.navbar-brand{
+	margin-top:25px; 
+	color: white;
+	font-size:40px;
+	font-family: tahoma;
+	margin-left: 100px;
+}
+
+.form .form-control { 
+	margin-bottom: 10px;
+}
+
+@media (min-width:768px) {
+	.navbar-form .lt-left{
+		float:left !important;
+	}
+	.navbar-form .lt-right{
+		float:right !important;
+	}
+	.navbar-form .checkbox{
+		display:block;
+	}
+	.navbar-form input[type="password"]{
+		margin-left:3px;
+	}
+	.navbar-form .login-btn{
+		margin-left: 10px;
+		margin-top: 24px;
+	}
+	#home{
+		margin-top:50px;
+	}
+	#home .slogan{
+		color: #0e385f;
+		line-height: 29px;
+		font-weight:bold;
+	}	
+}

@@ -1,0 +1,36 @@
+
+#appName{
+
+	text-align: left;
+	font-size: 20px;
+	color: white;
+	background-color: rgb(21,59,109);
+	height: 80px;
+
+	
+}
+#col1{
+
+	color: white;
+	font-family: Helvetica;
+}
+#email{
+	font-size: 14px;
+}
+#leftContainer{
+
+	float: left;
+	width: 60%;
+	
+}
+
+#rightContainer{
+
+	float:right;
+	text-align: left;
+	align-content: center;
+}
+#form2{
+    align-items: center;
+	align-content: center;
+}
